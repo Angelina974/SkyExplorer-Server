@@ -18,7 +18,6 @@
     "author": "david grossi",
     "license": "ISC",
     "homepage": "https://kissjs.net",
-
     "dependencies": {
         "aws-sdk": "^2.921.0",
         "axios": "^1.6.7",
@@ -32,6 +31,7 @@
         "jsonwebtoken": "^9.0.2",
         "mongodb": "^6.3.0",
         "multer": "^1.4.2",
+        "node-env": "^0.1.6",
         "nodemailer": "^6.4.11",
         "passport": "^0.7.0",
         "passport-azure-ad": "^4.3.4",
@@ -41,6 +41,7 @@
         "passport-linkedin-oauth2": "^2.0.0",
         "passport-microsoft": "^1.0.0",
         "puppeteer": "^20.1.2",
+        "puppeteer-core": "^22.10.0",
         "serve-static": "^1.14.1",
         "sharp": "^0.33.2",
         "stripe": "^8.167.0",
