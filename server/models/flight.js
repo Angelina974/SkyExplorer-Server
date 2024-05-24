@@ -15,7 +15,7 @@ kiss.app.defineModel({
             dataType: String
         },
         {
-            id: "student",
+            id: "client",
             dataType: String
         },
         {
