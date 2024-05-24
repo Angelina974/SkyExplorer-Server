@@ -1,0 +1,152 @@
+/* FILE UPLOAD */
+.upload-window {
+    width: 800px;
+    height: 600px;
+}
+
+.upload-window-mobile {
+    width: 100%;
+    height: 100%;
+}
+
+.upload-method-title {
+    font-size: 20px;
+}
+
+/* Upload gallery */
+.upload-gallery-container {
+    flex: 1;
+    padding: 5px;
+}
+
+.upload-gallery {
+    width: 100%;
+    border-style: dashed;
+    border-width: 2px;
+    border-color: #aaaaaa;
+    border-radius: 10px;
+    padding: 5px;
+    text-align: center;
+}
+
+.upload-gallery-dragover {
+    border-color: #00aaee !important;
+    background-color: #eaeaea;
+    transition: all 0.5s;
+}
+
+.upload-gallery-items {
+    display: flex;
+    flex-flow: column;
+    width: 100%;
+    flex: 1;
+    overflow: auto;
+}
+
+/* Web search preview */
+.upload-preview-items {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    overflow-y: auto;
+}
+
+.upload-preview-item {
+    object-fit: cover;
+    height: 150px;
+    width: 150px;
+    border: solid 3px #ffffff;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.upload-preview-item-selected, .upload-instagram-item-selected {
+    border-color: #00aaee;
+    border-radius: 75px;
+    transition: all .2s ease;
+}
+
+.upload-preview-item-selected::after, .upload-instagram-item-selected::after {
+    font-family: "Font Awesome 5 Free";
+    content: "\f07c"; /* far fa-folder-open */
+    font-weight: 900; /* 200 for regular icons, 900 for solid icons */
+    color: #00aaee;
+    padding-right: 10px;
+}
+
+/* Gallery item */
+.upload-item {
+    display: flex;
+    flex-flow: row;
+    align-items: center;
+    height: 50px;
+    width: 100%;
+    font-size: 12px;
+}
+
+.upload-thumbnail-container {
+    display: block;
+    /* width: 100px; */
+    text-align: center;
+    margin-right: 10px;
+}
+
+.upload-thumbnail {
+    font-size: 32px;
+    line-height: 50px !important;
+    width: 50px !important;
+    height: 50px;
+    object-fit: contain;
+}
+
+.upload-filename {
+    flex: 1;
+    text-align: left;
+}
+
+.upload-filesize {
+    color: #00aaee;
+    text-align: right;
+}
+
+.upload-delete {
+    width: 32px;
+    font-size: 16px;
+    text-align: center;
+    color: #888888;
+    cursor: pointer;
+}
+
+.upload-delete:hover {
+    color: #dddddd;
+}
+
+/* Upload widget button bar */
+.upload-button-bar {
+    min-height: 50px;
+    margin: 10px 0px 0px 0px;
+    padding: 10px 0px 0px 0px;
+    border-style: solid;
+    border-color: #dddddd;
+    border-width: 1px 0px 0px 0px;
+}
+
+/* Dropbox button */
+.dropbox-dropin-btn, .dropbox-dropin-btn:link {
+    font-size: 16px !important;
+    padding: 5px 20px 10px 20px !important;
+    margin: 20px;
+    border-radius: 10px !important;
+}
+
+/* Box button */
+.box-authentication-button {
+    margin: 10px;
+    padding: 5px 10px 5px 10px;
+}
+
+.upload-box-picker {
+    width: 100%;
+    height: 100%;
+}
+/* /FILE UPLOAD */

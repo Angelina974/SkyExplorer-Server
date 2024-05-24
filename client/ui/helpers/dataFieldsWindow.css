@@ -1,0 +1,14 @@
+/* WINDOW TO SELECT FIELDS */
+.switch-field {
+    padding: 0px;
+    border-radius: 5px;
+}
+
+.switch-field:hover {
+    background-color: var(--menu-item-background-hover);
+}
+
+.switch-field > .field-label {
+    cursor: grab;
+}
+/* /WINDOW TO SELECT FIELDS */

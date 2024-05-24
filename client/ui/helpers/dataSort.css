@@ -1,0 +1,20 @@
+/* DATA SORTER */
+.data-sorter {
+    padding: 5px 8px 5px 16px;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.data-sorter:hover {
+    background-color: var(--menu-item-background-hover);
+}
+
+.data-sorter-delete {
+    font-size: 14px;
+}
+
+.data-sorter-delete:hover {
+    color: #999999;
+}
+/* /DATA SORTER */

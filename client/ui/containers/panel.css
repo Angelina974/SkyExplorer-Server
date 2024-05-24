@@ -1,0 +1,117 @@
+/* PANEL (and derivatives) */
+.a-panel {
+    display: flex;
+    flex-flow: column;
+    background: var(--panel-background);
+    border-style: var(--panel-border-style);
+    border-width: var(--panel-border-width);
+    border-color: var(--panel-border);
+    border-radius: var(--panel-border-radius);
+    box-shadow: var(--panel-box-shadow);
+    user-select: none;
+}
+
+/* Panel mask for modal windows */
+.panel-mask {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+/* Panel header and header items */
+.panel-header {
+    display: flex;
+    flex-flow: row;
+    align-items: center;
+    padding: 8px;
+
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 24px;
+
+    background: var(--panel-header);
+    border-radius: var(--panel-border-radius) var(--panel-border-radius) 0px 0px;
+}
+
+.panel-header-collapsible {
+    cursor: pointer;
+}
+
+.panel-header-draggable {
+    cursor: move;
+}
+
+.panel-title {
+    color: #ffffff;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    vertical-align: middle;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-right: 10px;
+}
+
+.panel-icon {
+    margin: 0px 10px 0px 5px;
+    
+    color: #ffffff;
+    font-size: 16px;
+    vertical-align: middle;    
+}
+
+.panel-buttons {
+    color: #ffffff;
+    font-size: 22px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.panel-button {
+    box-shadow: none !important;
+    padding: 0 !important;
+    margin-right: 5px;
+}
+
+.panel-custom-buttons {
+    display: flex;
+    flex-flow: row;
+    align-items: center;
+}
+
+.panel-custom-icons {
+    display: flex;
+    flex-flow: row;
+    align-items: center;
+}
+
+@media (hover: hover) {
+    .panel-buttons:hover {
+        color: black;
+    }
+    
+    .panel-button-close:hover {
+        transform: rotate(90deg);
+        transition: all 0.2s;
+    }
+}
+
+/* Panel body and content */
+/* Only the bottom corners must be rounded when there is a header */
+/* All corners must be rounded when there is no header */
+.panel-body {
+    border-radius: 0px 0px var(--panel-border-radius) var(--panel-border-radius);
+    padding: var(--panel-padding);
+    overflow: hidden;
+    flex: 1;
+}
+
+.panel-body-no-header {
+    border-radius: var(--panel-border-radius);
+    padding: var(--panel-padding);
+    overflow: hidden;
+    flex: 1;
+}
+/* /PANEL */

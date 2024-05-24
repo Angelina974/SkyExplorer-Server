@@ -1,0 +1,67 @@
+/* COLOR FIELD */
+.a-color {
+    display: inline-flex;
+    flex-flow: row;
+    vertical-align: top;
+    margin: 0px;
+    padding: var(--field-padding);
+}
+
+.field-color-container {
+    display: flex;
+    flex-flow: row;
+    align-items: center;
+    
+    min-height: 27px;
+    min-width: 27px;
+
+    border-style: solid;
+    border-width: 1px;
+    border-color: var(--field-border);
+    background: var(--field-background);
+    border-radius: var(--field-border-radius);
+    cursor: pointer;
+}
+
+.field-color-container-custom {
+    padding: var(--field-padding);
+}
+
+.field-color-container-standard {
+    padding: 0 var(--field-padding) 0 var(--field-padding);
+}
+
+.field-color-palette-custom {
+    min-width: 16px;
+    min-height: 16px;
+    border-radius: 3px;
+    border: solid 1px var(--body);
+    transition: var(--transition-medium);
+    padding: 0;
+    margin: 0;
+}
+
+.field-color-palette-standard {
+    background: transparent !important;
+    padding: 0;
+    border-style: none;
+    width: 20px;
+    height: 24px;
+}
+
+.field-color-input {
+    color: var(--field);
+    font-family: var(--field-font-family);
+    font-size: var(--field-font-size);
+    margin-left: 5px;
+    border-style: none;
+    background-color: transparent;
+    width: 100%;
+
+    -moz-user-select: text;
+    -khtml-user-select: text;
+    -webkit-user-select: text;
+    -ms-user-select: text;
+    user-select: text;    
+}
+/* /COLOR FIELD */

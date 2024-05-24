@@ -1,0 +1,25 @@
+/* RATING FIELD */
+.a-rating {
+    display: flex;
+    margin: 0px;
+    padding: var(--field-padding);
+    cursor: pointer;
+}
+
+.field-rating {
+    display: flex;
+    flex-flow: row;
+    align-items: center;
+    min-height: 27px;
+    overflow: hidden;
+}
+
+.rating {
+    font-size: 13px;
+    margin: 0 0 0 2px;
+}
+
+.rating:hover {
+    transform: rotate(360deg) scale(1.5);
+    transition: all 0.2s;
+}

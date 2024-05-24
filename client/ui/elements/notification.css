@@ -1,0 +1,10 @@
+/* NOTIFICATION */
+.a-notification {
+    padding: 10px;
+    border-radius: 5px;
+    color: #ffffff;
+    border-color: #000000;
+    background-color: #000000;
+    box-shadow: var(--panel-box-shadow);
+}
+/* /NOTIFICATION */

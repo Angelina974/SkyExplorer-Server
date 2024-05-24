@@ -1,0 +1,687 @@
+/* DATATABLE
+
+It's the most compex UI component of KissJS library, so it deserves a few explanations.
+
+The first column of the body is statically positionned on the side of the screen.
+For this, the CSS uses a body "container" with 2 components:
+- a div for the first column
+- a div for other columns
+
+body container:
+-----------------------------
+| fixed  | body             |
+| body's | (other columns)  |
+| 1st    |                  |
+| column |                  |
+|        |                  |
+|        |                  |
+|        |                  |
+-----------------------------
+The same principle is used for the datatable header columns.
+
+The virtual scrollbar is achieved with a fixed positionned layer on top of the datatable.
+*/
+
+/* DATATABLE */
+.a-datatable {
+    display: block;
+    box-sizing: border-box;
+    flex: 1;
+}
+
+.datatable {
+    display: flex;
+    flex-flow: column;
+    user-select: none;
+}
+
+/* DATATABLE TOOLBAR */
+.datatable-toolbar {
+    height: 40px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: var(--datatable-toolbar-background);
+    padding: 5px;
+    border-style: solid;
+    border-width: 0px 0px 1px 0px;
+    border-color: var(--datatable-cell-border);
+}
+
+.datatable-toolbar .a-button {
+    margin: 0px 5px 0px 0px;
+    height: 32px;
+}
+
+.datatable-toolbar .button-icon {
+    font-size: 14px;
+}
+
+.datatable-toolbar .button-text {
+    font-size: 12px;
+}
+
+.datatable-toolbar .spacer {
+    flex: 1
+}
+
+.datatable-toolbar-pager-index {
+    max-height: 32px;
+    line-height: 32px;
+    margin: 0px 5px 0px 5px;
+    white-space: nowrap;
+    font-size: 11px;
+}
+
+.datatable-toolbar-search {
+    width: 32px;
+    font-size: 20px;
+    text-align: center;
+}
+
+/* DATATABLE HEADER */
+.datatable-header-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.datatable-header {
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+    min-height: var(--datatable-header-height);
+    border-style: solid;
+    border-width: 1px 0px 1px 0px;
+    border-color: var(--datatable-header-border);
+}
+
+/* FIRST COLUMN HEADER */
+.datatable-header-1st-column {
+    display: flex;
+    align-items: center;
+    width: var(--datatable-1st-column-width);
+    min-width: var(--datatable-1st-column-width);
+    background-color: var(--datatable-header-background);
+    border-style: solid;
+    border-width: 1px 1px 1px 0px;
+    border-color: var(--datatable-header-border);
+}
+
+/* FIRST COLUMN HEADER CHECKBOX */
+.datatable-header-checkbox {
+    padding: 0px 0px 0px 4px;
+    font-size: 18px;
+    width: 100%;
+}
+
+.datatable-header-checkbox:hover {
+    background: var(--datatable-header-background-hover);
+    cursor: pointer;
+}
+
+.datatable-header-checkbox-on::after {
+    content: "\f14a";
+    /* far fa-check-square */
+    font-family: "Font Awesome 5 Free";
+    font-weight: 200;
+    /* 200 for regular icons, 900 for solid icons */
+    font-size: 18px;
+}
+
+.datatable-header-checkbox-off::after {
+    content: "\f0c8";
+    /* far fa-square */
+    font-family: "Font Awesome 5 Free";
+    font-weight: 200;
+    /* 200 for regular icons, 900 for solid icons */
+    font-size: 18px;
+}
+
+.datatable-header-checkbox:hover {
+    color: #000000;
+}
+
+/* COLUMN HEADER */
+.datatable-column-header {
+    background: var(--datatable-header-background);
+    display: inline-flex;
+    flex-direction: row;
+    white-space: nowrap;
+    min-height: 32px;
+    line-height: 32px;
+}
+
+.datatable-column-header:hover {
+    background-color: var(--datatable-header-background-hover);
+}
+
+.datatable-column-header-1st {
+    padding: 0px 0px 0px 0px;
+    border-color: var(--datatable-cell-border);
+    border-style: solid;
+    border-width: 0px 0px 0px 1px;
+}
+
+.datatable-column-header-title {
+    min-width: 174px;
+    width: 174px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: var(--datatable-header);
+    vertical-align: middle;
+    font-family: var(--body-font-family-sans-serif);
+    font-size: 14px;
+    font-weight: normal;
+    cursor: grab;
+    user-select: none;
+}
+
+.datatable-column-header-icon {
+    font-size: 11px;
+    color: #00aaee;
+    margin: 0 5px 0 3px;
+}
+
+/* COLUMN HEADER PROPERTIES MENU */
+.datatable-column-header-properties {
+    min-width: 10px;
+    padding-top: 12px;
+    font-size: 10px;
+    cursor: pointer;
+}
+
+.datatable-column-header-properties:hover {
+    color: #00aaee;
+}
+
+/* COLUMN HEADER RESIZER */
+.datatable-column-header-resizer {
+    min-width: 5px;
+    height: 100%;
+    cursor: ew-resize;
+    border-radius: 10px;
+}
+
+.datatable-column-header-resizer:hover {
+    background-color: #00aaee;
+}
+
+/* COLUMN DRAG & DROP */
+.datatable-column-dragover-right {
+    border-style: solid;
+    border-width: 0px 1px 0px 0px !important;
+    border-color: #00aaee !important;
+}
+
+.datatable-column-dragover-left {
+    border-style: solid;
+    border-width: 0px 0px 0px 1px !important;
+    border-color: #00aaee !important;
+}
+
+/* LAST COLUMN HEADER */
+.datatable-header-last-column {
+    min-width: 50px;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.datatable-header-last-column > span {
+    font-size: 16px;
+    padding: 8px;
+}
+
+.datatable-header-last-column > span:hover {
+    transform: rotate(90deg);
+    transition: all 0.2s;
+}
+
+/* DATATABLE BODY */
+.datatable-body-container {
+    display: flex;
+    flex-flow: row;
+    overflow: hidden;
+    height: 100%;
+    background-color: var(--datatable-body-background);
+}
+
+.datatable-body-container-empty::before {
+    color: var(--body-alt);
+    font-size: 128px;
+    position: relative;
+    top: 35%;
+    left: calc(50% - var(--datatable-1st-column-width) / 2);
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900; /* 200 for regular icons, 900 for solid icons */
+    content: "\f49e"; /*  fas fa-box-open */
+    transition: all 1s;
+}
+
+.datatable-body-1st-column {
+    display: flex;
+    flex-flow: column;
+    min-width: var(--datatable-1st-column-width);
+    width: var(--datatable-1st-column-width);
+}
+
+.datatable-body {
+    display: flex;
+    flex-flow: column;
+    overflow-y: hidden;
+    background-color: var(--datatable-body-background);
+}
+
+/* ROWS */
+.datatable-row {
+    display: block;
+    white-space: nowrap;
+    width: min-content;
+    background-color: var(--datatable-cell-background);
+}
+
+.datatable-row:hover {
+    background-color: var(--datatable-row-hover);
+}
+
+.datatable-row-selected {
+    background-color: var(--datatable-row-selected);
+}
+
+/* ROW NUMBER */
+.datatable-row-number {
+    display: inline-block;
+    padding-left: 5px;
+    width: 100%;
+}
+
+/* ROW CHECKBOX */
+.datatable-row-checkbox {
+    margin-right: 8px;
+    color: var(--datatable-cell-1st-column);
+}
+
+.datatable-row-checkbox-on::after {
+    content: "\f14a";
+    /* far fa-check-square */
+    font-family: "Font Awesome 5 Free";
+    font-weight: 200;
+    /* 200 for regular icons, 900 for solid icons */
+    font-size: 18px;
+}
+
+.datatable-row-checkbox-off::after {
+    content: "\f0c8";
+    /* far fa-square */
+    font-family: "Font Awesome 5 Free";
+    font-weight: 200;
+    /* 200 for regular icons, 900 for solid icons */
+    font-size: 18px;
+}
+
+.datatable-row-checkbox:hover {
+    color: #000000;
+}
+
+/* ROW EXPAND / ROW ACTION */
+.datatable-row-action {
+    padding: 8px;
+}
+
+.datatable-cell-1st:hover .datatable-row-action {
+    padding: 8px;
+    color: #000000;
+}
+
+.datatable-row-action:hover {
+    transition: all 0.1s;
+    color: #00aaee !important;
+    font-size: 16px;
+}
+
+/* Mobile don't need row action column */
+.a-datatable-mobile .datatable-row-action {
+    display: none;
+}
+
+/* CELL */
+.datatable-cell {
+    display: inline-block;
+    align-items: center;
+    vertical-align: middle;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    min-height: var(--datatable-cell-height);
+    max-height: var(--datatable-cell-height);
+    line-height: var(--datatable-cell-height);
+    height: 100%;
+    padding: var(--datatable-cell-padding);
+
+    color: var(--datatable-cell);
+    border-color: var(--datatable-cell-border);
+    border-style: solid;
+    border-width: 0px 1px 1px 0px;
+    font-size: 12px;
+    font-weight: normal;
+    user-select: none;
+}
+
+/* SELECTED CELL */
+.datatable-cell-selected {
+    color: #00aaee;
+    border-color: #00aaee !important;
+    border-width: 1px !important;
+    cursor: pointer;
+    outline: none;
+}
+
+.datatable-cell-selected-locked {
+    color: #ff0000;
+    border-color: #ff0000 !important;
+}
+
+.datatable-cell-selected-locked::after {
+    content: "\f023";
+    /* fas fa-lock */
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    /* 200 for regular icons, 900 for solid icons */
+    font-size: 8px;
+    color: #ff0000;
+    margin-left: 5px;
+}
+
+/* EDITED CELL */
+.datatable-cell-edited {
+    font-size: 12px;
+}
+
+/* FIRST COLUMN CELL */
+.datatable-cell-1st {
+    width: var(--datatable-1st-column-width);
+
+    display: inline-flex;
+    flex-flow: row;
+    align-items: center;
+    vertical-align: middle;
+    overflow: hidden;
+    white-space: nowrap;
+
+    height: var(--datatable-cell-height);
+    padding: var(--datatable-cell-padding);
+
+    color: var(--datatable-cell-1st-column);
+    background-color: var(--datatable-cell-1st-column-background);
+    border-style: solid;
+    border-width: 0px 1px 1px 1px;
+    border-color: var(--datatable-cell-border);
+    user-select: none;
+    cursor: pointer;
+}
+
+/* LAST COLUMN CELL (just for spacing) */
+.datatable-cell-blank {
+    min-width: 50px;
+}
+
+/* DATATABLE CELL TYPES */
+
+/* DATE */
+.datatable-cell input[type=date] {
+    font-size: 12px;
+}
+
+/* BUTTON */
+.datatable-cell-button {
+    height: 30px;
+    border-width: 2px;
+}
+
+/* TEXT */
+.datatable-type-text {
+    text-align: left;
+}
+
+/* TEXTAREA */
+.datatable-type-textarea, .datatable-type-aiTextarea {
+    display: inline-flex;
+    justify-content: left;
+    white-space: pre-wrap;
+    flex-wrap: wrap;
+    line-height: unset;
+    cursor: pointer;
+}
+
+/* NUMBER */
+.datatable-type-number {
+    text-align: right;
+}
+
+/* DATE */
+.datatable-type-date {
+    text-align: center;
+}
+
+/* PASSWORD */
+.datatable-type-password {
+    text-align: center;
+}
+
+/* CHECKBOX */
+.datatable-type-checkbox {
+    cursor: pointer;
+    text-align: center;
+}
+
+.datatable-type-checkbox-unchecked {
+    font-size: 18px;
+    color: #dddddd;
+}
+
+.datatable-type-checkbox-checked {
+    font-size: 18px;
+}
+
+/* ICON */
+.datatable-type-icon {
+    font-size: 24px;
+    text-align: center;
+    cursor: pointer;
+}
+
+/* COLOR */
+.datatable-type-color {
+    display: inline-block;
+    min-width: 24px;
+    height: 24px;
+    text-align: center;
+    padding: 8px;
+}
+
+.datatable-type-color>span {
+    border-radius: var(--panel-border-radius);
+    box-shadow: var(--shadow-1);
+    cursor: pointer;
+}
+
+/* LINK */
+.datatable-type-link {
+    text-align: center;
+    cursor: pointer;
+}
+
+/* ATTACHMENT */
+.datatable-type-attachment {
+    display: inline-flex;
+    align-items: inherit;
+    overflow: hidden;
+    height: 100%;
+}
+
+.datatable-type-attachments-container {
+    display: flex;
+    flex-flow: row;
+    /* align-items: center; */
+    height: 100%;
+}
+
+.datatable-type-attachment-image {
+    object-fit: cover;
+    border: solid 2px #dddddd;
+    margin: 2px;
+    cursor: pointer;
+    height: 90%;
+}
+
+.datatable-type-attachment-image:hover {
+    border-color: #bbbbbb;
+}
+
+.datatable-type-attachment-icon {
+    line-height: 32px !important;
+    max-height: 36px;
+    font-size: 27px;
+    width: 28px;
+    text-align: center;
+    border: solid 2px #dddddd;
+    margin: 2px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.datatable-type-attachment-icon:hover {
+    border-color: #bbbbbb;
+}
+
+/* GROUP SECTION */
+.datatable-group {
+    position: relative;
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+    height: var(--datatable-group-cell-height);
+    line-height: var(--datatable-group-cell-height);
+    color: var(--datatable-group-text);
+    cursor: pointer;
+    padding: 0px 32px 0px 32px;
+    border-color: var(--datatable-group-cell-border);
+    border-style: solid;
+    border-width: 0px 0px 1px 0px;
+}
+
+/* GROUP AGGREGATION TYPE (sum, avg...) */
+.datatable-group-summary {
+    color: var(--datatable-group-background);
+}
+
+.datatable-group-summary>span {
+    font-size: 10px;
+    font-weight: normal;
+    margin: 0px 10px 0px 5px;
+}
+
+.datatable-group-summary:hover {
+    color: var(--body);
+}
+
+/* GROUP HIERARCHY NUMBER */
+.datatable-group-hierarchy {
+    color: var(--datatable-group-hierarchy);
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+/* GROUP HIERARCHY INDENTATION */
+.datatable-group-level-1 {
+    border-width: 0px 0px 1px 32px;
+}
+
+.datatable-group-level-2 {
+    border-width: 0px 0px 1px 64px;
+}
+
+.datatable-group-level-3 {
+    border-width: 0px 0px 1px 96px;
+}
+
+.datatable-group-level-4 {
+    border-width: 0px 0px 1px 128px;
+}
+
+.datatable-group-level-5 {
+    border-width: 0px 0px 1px 160px;
+}
+
+/* GROUP ROW */
+.datatable-group-row {
+    display: block;
+    white-space: nowrap;
+    width: min-content;
+    background-color: var(--datatable-group-background);
+    cursor: pointer;
+}
+
+.datatable-group-row:hover {
+    background-color: var(--datatable-group-background-hover);
+}
+
+/* GROUP CELL */
+.datatable-group-cell {
+    display: inline-block;
+    padding: var(--datatable-group-cell-padding);
+    min-height: var(--datatable-group-cell-height);
+    max-height: var(--datatable-group-cell-height);
+    line-height: var(--datatable-group-cell-height);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    vertical-align: middle;
+    text-align: right;
+    color: var(--datatable-group-text);
+    font-size: 14px;
+    font-weight: bold;
+    user-select: none;
+    border-style: solid;
+    border-width: 0px 0px 1px 0px;
+    border-color: var(--datatable-group-cell-border);
+}
+
+/* GROUP EXPAND / COLLAPSE ICON */
+.datatable-group-expanded::after {
+    content: "\f078";
+    /* fas fa-chevron-down */
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    /* 200 for regular icons, 900 for solid icons */
+    font-size: 20px;
+    margin-right: 10px;
+    color: #777777;
+}
+
+.datatable-group-collapsed::after {
+    content: "\f054";
+    /* fas fa-chevron-right */
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    /* 200 for regular icons, 900 for solid icons */
+    font-size: 20px;
+    margin-right: 10px;
+    color: #777777;
+}
+
+/* VIRTUAL SCROLLER */
+.datatable-virtual-scroller-container {
+    visibility: hidden;
+    position: fixed;
+    z-index: 0;
+    width: 19px;
+    overflow-y: scroll;
+    opacity: 0.85;
+}
+
+.datatable-virtual-scroller-container:hover {
+    opacity: 1;
+}
+/* /DATATABLE */

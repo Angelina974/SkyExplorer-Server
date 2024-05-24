@@ -1,0 +1,55 @@
+/* DATA FILTER GROUP */
+
+/* Operator of the group: AND / OR */
+.filter-group-operator .field-select {
+    width: 60px;
+}
+
+/* Zone that contains the filters have a left curly bracket */
+.filter-group-content {
+    padding: 10px;
+    margin: 5px 20px 5px 20px;
+    background-color: var(--body-background);
+    border-style: solid;
+    border-width: 0px 0px 0px 5px;
+    border-color: #00aaee;
+    border-radius: 10px;
+    width: 100%;
+    box-shadow: var(--shadow-1);
+}
+
+/* Effect when dragging over a group of filters */
+.filter-group-dragover {
+    background-color: var(--body-background);
+    animation-name: filter-group-dragover;
+    animation-duration: 1s;
+}
+
+@-webkit-keyframes filter-group-dragover {
+    0% {
+        background-color: var(--body-background);
+    }
+
+    50% {
+        background-color: var(--body-background-alt);
+    }
+
+    100% {
+        background-color: var(--body-background);
+    }
+}
+
+@keyframes filter-group-dragover {
+    0% {
+        background-color: var(--body-background);
+    }
+
+    50% {
+        background-color: var(--body-background-alt);
+    }
+
+    100% {
+        background-color: var(--body-background);
+    }
+}
+/* /DATA FILTER GROUP */

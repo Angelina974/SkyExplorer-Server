@@ -1,0 +1,146 @@
+/* CALENDAR */
+.a-calendar {
+    display: flex;
+    flex-flow: column;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    user-select: none;
+}
+
+.calendar-body {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: calc(100% - 40px);
+}
+
+.calendar-title {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.a-calendar-mobile .calendar-title {
+    font-size: 12px;
+}
+
+.calendar-header {
+    display: flex;
+    flex-flow: row;
+    align-items: center;
+    height: 32px;
+}
+
+.calendar-header-title {
+    flex: 1;
+    text-align: center;
+    background: var(--datatable-header-background);
+    padding: 5px;
+    margin: 2px;
+    border-radius: 24px;
+}
+
+.a-calendar-mobile .calendar-header-title {
+    font-size: 10px;
+}
+
+.calendar-week {
+    display: flex;
+    flex-flow: row;
+    flex: 1;
+    overflow: hidden;
+}
+
+.calendar-day {
+    font-weight: bold;
+    box-sizing: border-box;
+    display: flex;
+    flex-flow: column;
+    flex: 1;
+    border: 1px solid var(--panel-border);
+    border-radius: 5px;
+    padding: 5px;
+    margin: 2px;
+    overflow: hidden;
+}
+
+.calendar-today {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    border-radius: 32px;
+}
+
+.day-items {
+    overflow-y: auto;
+}
+
+.calendar-weekend {
+    background-color: var(--body-background-alt);
+}
+
+.calendar-no-weekend {
+    display: none;
+}
+
+.calendar-otherMonth {
+    font-weight: normal;
+    color: #c8c8c8;
+}
+
+/* RECORDS */
+.calendar-record {
+    border: solid 2px;
+    font-weight: normal;
+    margin: 0 0 5px 0;
+    padding: 5px;
+    border-radius: var(--panel-border-radius);
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    cursor: pointer;
+    box-shadow: var(--shadow-1);
+}
+
+.calendar-record:hover {
+    background-color: var(--body-background-alt);
+}
+
+.calendar-record-field {
+    margin: 10px;
+}
+
+.calendar-record-label {
+    font-weight: 600;
+    margin-top: 5px;
+}
+
+/* TOOLBAR */
+.calendar-toolbar {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 40px;
+    padding: 5px;
+}
+
+.calendar-toolbar .a-button {
+    margin: 0px 5px 0px 0px;
+    height: 32px;
+}
+
+.calendar-toolbar .button-icon {
+    font-size: 14px;
+}
+
+.calendar-toolbar .button-text {
+    font-size: 12px;
+}
+
+.calendar-toolbar .spacer {
+    flex: 1
+}
+
+/* /CALENDAR */

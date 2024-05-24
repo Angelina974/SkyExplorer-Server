@@ -1,0 +1,11 @@
+/* TIP */
+.a-tip {
+    position: fixed;
+    padding: 10px;
+    border-radius: var(--panel-border-radius);
+    color: var(--body-background);
+    background-color: var(--body);
+    box-shadow: var(--shadow-4);
+    z-index: 10000;
+}
+/* /TIP */

@@ -1,0 +1,177 @@
+/* SELECT */
+.a-select {
+    display: flex;
+    flex-flow: row;
+    vertical-align: top;
+    margin: 0px;
+    padding: var(--field-padding);
+}
+
+/* FIELD CONTAINER */
+.field-select {
+    display: inline-flex;
+    flex-flow: column;
+
+    padding: 2px;
+    min-height: 27px;
+
+    color: var(--field);
+    background: var(--field-background);
+   
+    font-family: var(--field-font-family);
+    font-size: var(--field-font-size);
+   
+    border-style: solid;
+    border-width: var(--field-border-width);
+    border-color: var(--field-border);
+    border-radius: var(--field-border-radius);
+}
+
+.field-select:hover {
+    border-color: var(--field-border-hover);
+    background: var(--field-background-hover);
+    transition: var(--field-transition);
+}
+
+.field-select:focus {
+    background: var(--field-background-focus);
+    transition: var(--field-transition);
+}
+
+.field-select-values {
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+/* SINGLE VALUE */
+.field-select-value {
+    display: inline-flex;
+    align-items: center;
+    white-space: nowrap;
+    
+    height: var(--field-select-value-height);
+    margin: var(--field-select-value-margin);
+    padding: var(--field-select-value-padding);
+
+    color: #ffffff;
+    background: #99aabb;
+    
+    border: var(--field-select-value-border);
+    border-radius: var(--field-select-value-border-radius);
+    box-shadow: var(--select-value-shadow);
+    cursor: pointer;
+}
+
+.field-select-value-delete {
+    font-size: var(--field-select-value-delete-font-size);
+    padding-left: 8px;
+    cursor: pointer;
+}
+
+.field-select-value-delete:hover {
+    color: #000000;
+}
+
+/* INPUT */
+.field-select-input {
+    color: var(--field);
+    width: 100%;
+    background: transparent;
+    padding: var(--field-padding);
+    border-style: solid;
+    border-color: var(--field-border);
+    border-radius: var(--field-border-radius);
+}
+
+/* PLACEHOLDER */
+.field-select-placeholder {
+    display: inline-block;
+    color: var(--field);
+    padding: var(--field-padding);
+}
+
+/* OPTIONS WRAPPER */
+.field-select-options {
+    display: none;
+    position: absolute;
+    z-index: 1000;
+    overflow: hidden;
+
+    background: var(--body-background);
+    border: var(--menu-border);
+    box-shadow: var(--select-option-box-shadow);
+    border-radius: 5px;
+    padding: 5px;
+}
+
+/* OPTIONS WRAPPER */
+.field-select-options-list {
+    overflow-y: auto;
+}
+
+.a-select-mobile .field-select-options-list {
+    height: calc(100% - 36px);
+    overflow: auto !important;
+}
+
+.a-select-mobile-close-container {
+    display: block;
+    width: 100%;
+}
+
+.a-select-mobile-close {
+    font-size: 16px;
+    padding: 10px;
+}
+
+/* SINGLE OPTION */
+.field-option {
+    position: relative;
+    display: flex;
+    align-items: center;
+    font-size: var(--field-font-size);
+    color: var(--select-option);
+    background: var(--select-option-background);
+    
+    margin: 3px;
+    padding: 7px 10px 7px 10px;
+    border-width: 0px 0px 0px 3px;
+    border-style: solid;
+    cursor: pointer;
+}
+
+.field-option:hover {
+    background: var(--select-option-background-highlight);
+}
+
+.field-option-hidden {
+    display: none;
+}
+
+.field-option-selected {
+    background-color: var(--select-option-background-selected);
+}
+
+.field-option-icon {
+    width: 24px;
+    font-size: 20px;
+    padding: 0px 32px 0px 5px;
+}
+
+.field-option-icon-small {
+    width: 24px;
+    font-size: 14px;
+    padding: 0px 32px 0px 5px;
+}
+
+/* HIGHLIGHT OPTION WHEN NAVIGATING THE LIST */
+.field-option-highlight {
+    color: var(--select-option-highlight) !important;
+    border-color: var(--select-option-background-highlight);
+    background-color: var(--select-option-background-highlight) !important;
+}
+
+.field-option-disabled {
+    display: none;
+}
+/* /SELECT */

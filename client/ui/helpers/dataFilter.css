@@ -1,0 +1,16 @@
+/* DATA FILTER */
+
+/* Filter container */
+.filter {
+    padding: 0px 10px 0px 10px;
+    margin: 5px 20px 5px 20px;
+    border-radius: 10px;
+    background-color: var(--body-background);
+    box-shadow: var(--shadow-2);
+}
+
+/* Filter delete / trash button */
+.filter .a-button {
+    margin: 0px 20px 0px 10px !important;
+}
+/* /DATA FILTER */

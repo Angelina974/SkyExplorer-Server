@@ -1,0 +1,117 @@
+/* INPUT FIELD */
+.a-field {
+    display: inline-flex;
+    flex-flow: row;
+    vertical-align: top;
+    margin: 0px;
+    padding: var(--field-padding);
+}
+
+.field-input {
+    display: inline-block;
+    min-height: 27px;
+    padding: var(--field-padding);
+    color: var(--field);
+    background: var(--field-background);
+    font-family: var(--field-font-family);
+    font-size: var(--field-font-size);
+    border-style: solid;
+    border-width: var(--field-border-width);
+    border-color: var(--field-border);
+    border-radius: var(--field-border-radius);
+    
+    box-sizing: border-box;
+    resize: none;
+    word-wrap: break-word;
+    Xwhite-space: pre-wrap;
+}
+
+.field-input:hover {
+    border-color: var(--field-border-hover);
+    background: var(--field-background-hover);
+    transition: var(--field-transition);
+}
+
+.field-input:focus {
+    background: var(--field-background-focus);
+    transition: var(--field-transition);
+}
+
+.field-input-invalid {
+    border-style: var(--field-border-invalid-style) !important;
+    border-width: var(--field-border-invalid-width) !important;
+    border-color: var(--field-border-invalild) !important;
+}
+
+.field-input-read-only {
+    border-style: none !important;
+    cursor: unset !important;
+}
+
+.field-label {
+    display: inline-block;
+    padding: var(--field-padding);
+    color: var(--field-label);
+    font-family: var(--field-font-family);
+    font-size: var(--field-font-size);
+    font-weight: var(--field-label-font-weight);
+}
+
+.field-label-help {
+    font-size: 10px;
+    margin: 8px 5px 0px 5px;
+    font-weight: normal;
+}
+
+.field-label-read-only {
+    vertical-align: text-top;
+    font-size: 8px;
+}
+
+.field-label-required {
+    color: #ff0000;
+}
+
+.field-label-setup:hover::after {
+    font-family: "Font Awesome 5 Free";
+    content: "\f0d7"; /* fas fa-caret-down */
+    font-weight: 900; /* 200 for regular icons, 900 for solid icons */
+    padding-left: 4px;
+    cursor: pointer;
+}
+
+/* DATE PICKER */
+::-webkit-datetime-edit {
+    font-family: var(--body-font-family-sans-serif);
+    padding: 0px 0px 0px 5px;
+}
+
+::-webkit-datetime-edit-fields-wrapper {
+    background: transparent;
+}
+
+::-webkit-inner-spin-button {
+    display: block;
+}
+
+::-webkit-calendar-picker-indicator {
+    opacity: 0.2;
+    cursor: pointer;
+}
+
+::-webkit-datetime-edit-text,
+::-webkit-datetime-edit-day-field,
+::-webkit-datetime-edit-month-field,
+::-webkit-datetime-edit-year-field {
+    color: var(--field-color);
+}
+
+/* Removes the blue background when editing date fields */
+::-webkit-datetime-edit-day-field:focus,
+::-webkit-datetime-edit-month-field:focus,
+::-webkit-datetime-edit-year-field:focus {
+    font-size: 20px;
+    color: #00aaee;
+    background-color: transparent;
+}
+/* /INPUT FIELD */

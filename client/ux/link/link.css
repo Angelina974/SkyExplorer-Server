@@ -1,0 +1,158 @@
+/* LINK FIELD */
+
+/* FIELD VALUE */
+.field-link-value {
+    display: inline-flex;
+    align-items: center;
+    white-space: nowrap;
+    
+    font-size: var(--field-font-size);
+    
+    width: 100%;
+    margin: var(--field-select-value-margin);
+    padding: var(--field-select-value-padding);
+
+    color: var(--field);
+    background: var(--body-background);
+    
+    border-style: solid;
+    border-width: 1px;
+    border-radius: var(--field-select-value-border-radius);
+    cursor: pointer;
+}
+
+.field-link-value:hover {
+    color: #ffffff;
+    background-color: #556677;
+}
+
+.field-link-value-compact {
+    height: 28px;
+}
+
+.field-link-record {
+    display: inline-flex;
+    align-items: center;
+    white-space: nowrap;
+    width: 100%;
+    overflow: hidden;
+}
+
+/* FIELD VALUE WHEN DISPLAYED IN A DATATABLE CELL */
+.field-link-value-cell {
+    line-height: 16px;
+    display: inline;
+    white-space: nowrap;
+    font-size: var(--field-font-size);
+
+    margin: var(--field-select-value-margin);
+    padding: var(--field-select-value-padding);
+
+    color: var(--field);
+    background: var(--field-background);
+    
+    border-color: var(--field-border);
+    border-style: solid;
+    border-radius: var(--field-select-value-border-radius);
+    cursor: pointer;
+}
+
+.field-link-value-cell:hover {
+    color: #ffffff;
+    background-color: #556677;
+}
+
+/* LINK BUTTONS (ADD / LINK / EXPAND) */
+.field-link-buttons {
+    display: inline-flex;
+    flex-flow: row;
+    width: 100%;
+}
+
+.field-link-button {
+    min-height: unset!important;
+    height: 28px;
+    margin-right: 2px;
+}
+
+.field-link-button > * {
+    font-size: 13px;
+    margin-left: 5px;
+}
+
+/* LINK ITEM */
+.field-link-item {
+    font-family: var(--field-font-family);
+    display: inline-flex;
+    flex-flow: column;
+    min-width: 100px;
+    flex: 1;
+    padding: 5px;
+}
+
+.field-link-item-badge {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    min-width: 32px;
+    height: 32px;
+    border-radius: 5px;
+}
+
+.field-link-item-label {
+    font-weight: var(--field-label-font-weight);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: 5px;
+}
+
+.field-link-item-value {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: 5px;
+    display: flex;
+    flex-flow: row;
+    align-items: center;
+}
+
+.field-link-value-delete {
+    font-size: 16px;
+    padding: 0px 0px 0px 16px;
+    cursor: pointer;
+}
+
+/* LINK ITEM IMAGE */
+.field-link-item-image {
+    font-family: var(--field-font-family);
+    display: inline-flex;
+    flex-flow: row;
+    align-items: center;
+    min-width: 150px;
+    padding: 5px;
+}
+
+.field-link-item-image-thumbnail {
+    max-height: 44px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: var(--field-border);
+    box-shadow: var(--shadow-1);
+}
+
+.field-link-item-color {
+    width: 20px;
+    height: 20px;
+    border-radius: var(--panel-border-radius);
+    margin-left: 5px;
+}
+
+.field-link-item-icon {
+    font-size: 20px;
+    margin-left: 5px;
+}
+
+.field-link-item-slider {
+    width: 70%;
+}
+/* /LINK FIELD */

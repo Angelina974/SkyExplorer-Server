@@ -1,0 +1,19 @@
+/* PROGRESS BAR FIELD */
+.a-slider {
+    display: flex;
+    margin: 0px;
+    padding: var(--field-padding);
+}
+
+.field-slider-container {
+    display: flex;
+    flex-flow: row-reverse;
+    align-items: center;
+    flex: 1;
+    min-height: 27px;
+    overflow: hidden;
+}
+
+.field-slider {
+    width: 100%
+}

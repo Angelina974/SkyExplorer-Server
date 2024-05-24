@@ -1,0 +1,8 @@
+// MongoDB Playground
+// Connect to "test" database
+use("test")
+
+// Run any request against the database and get the results inside VSCode
+db["model"].find({
+    name: "Action"
+})

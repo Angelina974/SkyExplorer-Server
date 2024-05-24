@@ -1,0 +1,68 @@
+/* BOOKING */
+.a-booking {
+    display: block;
+}
+
+.booking {
+    display: block;
+    white-space: nowrap;
+    overflow: auto;
+}
+
+/* A SINGLE DAY (VERTICAL) */
+.booking-day {
+    display: inline-block;
+    vertical-align: top;
+    
+    margin: 5px;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #00aaee;    
+}
+
+.booking-day-header {
+    color: #5599aa;
+    font-size: 14px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.booking-day-details {
+    padding: 5px;
+}
+
+.booking-day-weekend {
+    text-align: center;
+    background-color: #dddddd;
+}
+
+.booking-day-slot {
+    display: block;
+    padding: 5px 10px 10px 10px;
+    margin: 5px 0px 5px 0px;
+
+    border-radius: 8px;
+
+    background: #cceeff;
+    cursor: pointer;
+    
+    transition: all .2s ease-in;
+}
+
+.booking-day-slot:hover {
+    color: #ffffff;
+    background: #00aaee;
+}
+
+.booking-day-slot-time {
+    font-size: 10px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.booking-day-slot-name {
+    font-size: 12px;
+    font-weight: bold;
+    text-align: center;
+}
+/* /BOOKING */

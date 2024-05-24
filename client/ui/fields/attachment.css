@@ -1,0 +1,222 @@
+/* ATTACHMENT FIELD */
+.a-attachment {
+    display: block;
+    width: 100% !important;
+    padding: var(--field-padding);
+    line-height: 20px;
+}
+
+.a-attachment:hover {
+    border-color: var(--field-border-hover);
+}
+
+.field-attachment-button {
+    height: 24px;
+    padding: 5px 10px;
+    margin: 0px 2px 10px 2px;
+    font-size: 12px;
+}
+
+.field-attachment-icon {
+    margin-right: 10px;
+}
+
+.field-attachment-layout {
+    display: none;
+}
+
+.field-attachment-gallery {
+    display: flex;
+    flex-flow: row;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    width: 100%;
+    border-style: solid;
+    border-width: var(--field-border-width);
+    border-color: var(--field-border);
+    border-radius: var(--field-border-radius);
+}
+
+/* FILES */
+.field-attachment-item {
+    display: flex;
+    flex-flow: row;
+    align-items: center;
+    height: 50px;
+    width: 100%;
+    font-size: 12px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: all 0.2s;
+}
+
+.field-attachment-item:hover {
+    background-color: var(--menu-item-background-hover);
+}
+
+.field-attachment-preview-container {
+    display: block;
+    text-align: center;
+    margin-right: 10px;
+}
+
+.field-attachment-preview {
+    font-size: 32px;
+    line-height: 50px !important;
+    width: 50px !important;
+    height: 50px;
+    object-fit: contain;
+    transition: all 0.2s;
+}
+
+.field-attachment-filename {
+    flex: 1;
+    text-align: left;
+    word-break: break-all;
+    margin-right: 10px;
+}
+
+.field-attachment-buttons {
+    display: inline-flex;
+    align-items: center;
+}
+
+.field-attachment-filesize {
+    color: var(--body);
+    text-align: right;
+}
+
+.field-attachment-delete {
+    width: 32px;
+    font-size: 13px;
+    text-align: center;
+    color: #aaaaaa;
+    cursor: pointer;
+}
+
+.field-attachment-delete:hover {
+    color: #ff0000;
+    font-size: 16px;
+    transition: all 0.1s;
+}
+
+.field-attachment-access {
+    width: 32px;
+    font-size: 13px;
+    text-align: center;
+    color: #aaaaaa;
+    cursor: pointer;
+}
+
+.field-attachment-access:hover {
+    color: #00aaee;
+    font-size: 16px;
+    transition: all 0.1s;
+}
+
+.field-attachment-download {
+    width: 32px;
+    font-size: 13px;
+    text-align: center;
+    color: #00aaee;
+    cursor: pointer;
+}
+
+.field-attachment-download:hover {
+    color: #334455;
+    font-size: 16px;
+    transition: all 0.1s;
+}
+
+.field-attachment-menu {
+    width: 32px;
+    font-size: 13px;
+    text-align: center;
+    color: #aaaaaa;
+    cursor: pointer;
+}
+
+.field-attachment-menu:hover {
+    color: #00aaee;
+    font-size: 16px;
+    transition: all 0.1s;
+}
+
+.field-attachment-read-only {
+    border-style: none !important;
+}
+
+/* VARIATIONS FOR THUMBNAILS VIEW */
+.field-attachment-item-thumbnails {
+    display: inline-flex;
+    flex-flow: column;
+    width: 218px;
+    height: 210px;
+    font-size: 12px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin: 5px;
+    box-shadow: var(--shadow-2);
+    padding: 5px;
+    overflow: hidden;
+    transition: all 0.2s;
+}
+
+.field-attachment-preview-thumbnails {
+    display: flex !important;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 32px;
+    width: 200px;
+    height: 150px;
+    object-fit: cover;
+    transition: all 0.2s;
+}
+
+.field-attachment-filename-thumbnails {
+    text-align: left;
+    height: 24px;
+    width: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* VARIATIONS FOR LARGE THUMBNAILS VIEW */
+.field-attachment-item-thumbnails-large {
+    display: inline-flex;
+    flex-flow: column;
+    width: 272px;
+    height: 305px;
+    font-size: 12px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin: 5px;
+    box-shadow: var(--shadow-2);
+    padding: 5px;
+    overflow: hidden;
+    transition: all 0.2s;
+}
+
+.field-attachment-preview-thumbnails-large {
+    display: flex !important;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 32px;
+    width: 290px;
+    height: 250px;
+    object-fit: cover;
+    transition: all 0.2s;
+}
+
+.field-attachment-filename-thumbnails-large {
+    text-align: left;
+    height: 24px;
+    width: 256px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* /ATTACHMENT FIELD */

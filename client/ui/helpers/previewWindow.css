@@ -1,0 +1,80 @@
+/* WINDOW TO PREVIEW ITEMS */
+
+/* Preview item */
+.preview-item-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    width: 100%;
+    background: #000000;
+    opacity: unset!important;
+}
+
+.preview-item {
+    max-width: 100%;
+    max-height: 100%;
+    vertical-align: middle;
+    opacity: unset!important;
+}
+
+.preview-item-icon {
+    font-size: 100px;
+}
+
+.preview-not-available {
+    font-size: 16px;
+    margin: 32px;
+    color: #ffffff;
+}
+
+/* Preview navigation */
+.preview-navigation {
+    width: 50px;
+    height: 100%;
+    align-items: center;
+}
+
+.preview-navigation-button {
+    height: 100%;
+    font-size: 32px;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+.preview-navigation-button:hover {
+    font-size: 40px;
+    color: #cccccc;
+    transition: all .1s;
+}
+
+/* Preview thumbnails */
+.preview-thumbnails-container {
+    text-align: center;
+    white-space: nowrap;
+    padding: 10px;
+    height: 80px;
+}
+
+.preview-thumbnail {
+    vertical-align: text-top;
+    font-size: 62px;
+    height: 64px;
+    object-fit: contain;
+    cursor: pointer;
+    border-style: solid;
+    border-width: 2px;
+    border-color: #000000;
+    border-radius: 5px;
+    margin: 0px 2px 0px 2px;
+}
+
+.preview-thumbnail:hover {
+    border-color: #ffffff;
+}
+
+.preview-thumbnail-selected {
+    box-shadow: 0px 0px 5px 5px #aaaaaa;
+    border: solid 2px #ffffff;
+}
+/* /WINDOW TO PREVIEW ITEMS */

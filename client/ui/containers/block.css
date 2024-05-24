@@ -1,0 +1,19 @@
+/* BLOCK */
+.a-block {
+    display: block;
+    overflow: hidden;
+}
+
+.block-droppable {
+    padding: 10px;
+    border-color: transparent #00aaee transparent transparent;
+    border-width: 1px;
+    border-style: solid;
+}
+
+.block-droppable:hover {
+    border-color: #00aaee;
+    border-style: dashed;
+    background-color: #fafafa;
+}
+/* /BLOCK */

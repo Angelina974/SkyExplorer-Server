@@ -1,0 +1,89 @@
+/* TREE LIST */
+.tree {
+    margin: 0px;
+    padding: 0px;
+    user-select: none;
+}
+
+ul .tree {
+    padding-inline-start: 16px; /* Edit this to modify the indentation size */
+}
+
+/* TREE LIST: FOLDER */
+.tree-folder {
+    list-style: none;
+}
+
+.tree-folder > div {
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.tree-folder > div:hover {
+    color: var(--tree-folder-hover);
+    background: var(--tree-folder-background-hover);
+}
+
+/* TREE LIST: OPENED FOLDER */
+.tree-folder-open > div::before {
+    font-family: "Font Awesome 5 Free";
+    content: "\f07c"; /* far fa-folder-open */
+    font-weight: 900; /* 200 for regular icons, 900 for solid icons */
+    color: #00aaee;
+    padding-right: 10px;
+}
+
+/* TREE LIST: CLOSED FOLDER */
+.tree-folder-closed > div::before {
+    font-family: "Font Awesome 5 Free";
+    content: "\f07b"; /* far fa-folder */
+    font-weight: 900; /* 200 for regular icons, 900 for solid icons */
+    color: #00aaee;
+    padding-right: 10px;
+}
+
+/* TREE LIST: LEAF */
+.tree-leaf {
+    list-style: none;
+}
+
+.tree-leaf > div {
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.tree-leaf > div::before {
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900; /* 200 for regular icons, 900 for solid icons */
+    content: "\f00b"; /* fas fa-th-list */
+    color: #eeeeee;
+    padding-right: 10px;
+}
+
+.tree-leaf > div:hover {
+    color: var(--tree-leaf-hover);
+    background: var(--tree-leaf-background-hover);
+}
+
+/* TREE LIST: MENU */
+.tree-leaf-menu {
+    float: right;
+    width: 40px;
+}
+
+.tree-leaf-menu::after {
+    float: right;
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900; /* 200 for regular icons, 900 for solid icons */
+    content: "\f142"; /* fas fa-ellipsis-v */
+    color: var(--tree-leaf-menu)
+}
+
+.tree-leaf-menu:hover::after {
+    color: var(--tree-leaf-menu-hover);
+}
+/* /TREE LIST */

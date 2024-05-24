@@ -1,0 +1,134 @@
+/* FORM */
+.form-tabs {
+    align-items: center;
+    padding: 5px 10px 5px 10px;
+}
+
+.form-tab {
+    font-weight: 600;
+    border-width: 0px 0px 2px 0px;
+    border-radius: 0px;
+    margin: 0px 5px 0px 0px;
+    padding: 10px 5px 10px 5px;
+    background: transparent;
+}
+
+.form-record {
+    background: var(--datatable-toolbar-background);
+}
+
+/* Form side bar */
+.form-side-bar {
+    min-width: 300px;
+    padding: 10px;
+    background-color: var(--body-background);
+    border-style: solid;
+    border-color: var(--panel-border);
+    border-width: 0px 2px 0px 0px;
+    overflow-y: auto;
+}
+
+.form-side-bar-menu {
+    margin: 5px;
+}
+
+.form-side-bar-button {
+    margin: 0px 5px 10px 5px;
+    border-style: none;
+    border-radius: var(--panel-border-radius);
+
+}
+
+/* Record form panel */
+.form-record .panel-header {
+    height: 50px;
+}
+
+.form-record .panel-icon {
+    font-size: 32px;
+}
+
+.form-record .panel-title {
+    font-size: 24px;
+}
+
+/* Form content panel */
+.form-content .a-panel {
+    margin: 0px 0px 8px 0px;
+    box-shadow: var(--shadow-1);
+}
+
+.form-content .panel-header {
+    height: 40px;
+}
+
+.form-content .panel-icon {
+    color: #ffffff;
+    font-size: 16px;
+}
+
+.form-content .panel-title {
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.form-content .panel-buttons {
+    color: #ffffff;
+    font-size: 16px;
+}
+
+.form-content .panel-body {
+    display: flex;
+    flex-flow: column;
+}
+
+/* Form panel body */
+.form-panel .panel-body {
+    transition: all 1s;
+}
+
+.form-content {
+    padding: 10px;
+}
+
+/* Feature welcome/help text */
+.form-feature-arrow {
+    width: 150px;
+    height: 64px;
+    font-size: 40px;
+    text-align: center;
+}
+
+.form-feature-description {
+    align-items: center;
+    justify-content: center;
+    margin: 10px;
+    padding: 10px;
+    color: #ffffff;
+    border-radius: 10px;
+    min-height: 300px;
+}
+
+.form-feature-description-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px;
+    padding: 20px;
+    font-size: 128px;
+    border-radius: 10px;
+    min-height: 280px;
+}
+
+.form-feature-description-title {
+    font-size: 32px;
+    font-weight: 600;
+    padding: 10px;
+}
+
+.form-feature-description-text {
+    font-size: 16px;
+    padding: 10px;
+}
+/* /FORM */

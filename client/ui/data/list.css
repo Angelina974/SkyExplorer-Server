@@ -1,0 +1,91 @@
+/* LIST */
+.a-list {
+    display: flex;
+    flex-flow: column;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    user-select: none;
+}
+
+.list-body {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: calc(100% - 40px);
+}
+
+.list-title {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.list-header {
+    display: flex;
+    flex-flow: row;
+    align-items: center;
+    height: 32px;
+}
+
+.list-header-title {
+    flex: 1;
+    text-align: center;
+    background: var(--datatable-header-background);
+    padding: 5px;
+    margin: 2px;
+    border-radius: 24px;
+}
+
+.list-record {
+    border: solid 2px;
+    font-weight: normal;
+    margin: 0 0 5px 0;
+    padding: 5px;
+    border-radius: var(--panel-border-radius);
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    cursor: pointer;
+    box-shadow: var(--shadow-1);
+}
+
+.list-record:hover {
+    background-color: var(--body-background-alt);
+}
+
+.list-record-field {
+    margin: 10px;
+}
+
+.list-record-label {
+    font-weight: 600;
+    margin-top: 5px;
+}
+
+/* TOOLBAR */
+.list-toolbar {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 40px;
+    padding: 5px;
+}
+
+.list-toolbar .a-button {
+    margin: 0px 5px 0px 0px;
+    height: 32px;
+}
+
+.list-toolbar .button-icon {
+    font-size: 14px;
+}
+
+.list-toolbar .button-text {
+    font-size: 12px;
+}
+
+.list-toolbar .spacer {
+    flex: 1
+}
+
+/* /LIST */

@@ -1,0 +1,9 @@
+req -newkey rsa:2048 -new -nodes -x509 -days 3650 -keyout key.pem -out cert.pem
+
+Country:FR
+State:Reunion
+Locality:Saint-Denis
+O:PickaForm
+OU:Kiss
+CN:David
+Email:david.grossi@pickaform.com

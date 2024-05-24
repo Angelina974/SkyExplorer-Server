@@ -1,0 +1,29 @@
+/* DIALOG */
+.panel-dialog .panel-header {
+    height: 50px;
+}
+
+.panel-dialog .panel-title {
+    font-size: 20px;
+}
+
+.panel-dialog .panel-icon {
+    font-size: 20px;
+}
+
+.panel-dialog .panel-body {
+    min-width: 400px;
+    padding: 20px;
+}
+
+@media (pointer: coarse) and (hover: none) {
+    .panel-dialog .panel-body {
+        min-width: unset;
+        padding: 10px;
+    }
+}
+
+.panel-dialog .a-button {
+    height: 40px;
+}
+/* /DIALOG */

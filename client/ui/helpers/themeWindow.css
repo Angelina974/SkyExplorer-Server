@@ -1,0 +1,11 @@
+/* WINDOW TO SELECT A THEME */
+.theme-window-title {
+    color: #00aaee;
+    font-size: 22px;
+    font-weight: bold;
+
+    width: 100% !important;
+    height: 24px !important;
+    box-shadow: none !important;
+}
+/* /WINDOW TO SELECT A THEME */

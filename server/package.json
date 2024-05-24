@@ -1,0 +1,49 @@
+{
+    "name": "kissjs-server",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "example": "env NODE_ENV=example node index"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/PickaForm/KissJS-framework.git"
+    },
+    "keywords": [
+        "nocode",
+        "business",
+        "apps"
+    ],
+    "author": "david grossi",
+    "license": "ISC",
+    "homepage": "https://kissjs.net",
+
+    "dependencies": {
+        "aws-sdk": "^2.921.0",
+        "axios": "^1.6.7",
+        "cookie-parser": "^1.4.6",
+        "cors": "^2.8.5",
+        "dotenv": "^10.0.0",
+        "express": "^4.17.1",
+        "express-session": "^1.18.0",
+        "isbot": "^3.6.10",
+        "jsdom": "^22.0.0",
+        "jsonwebtoken": "^9.0.2",
+        "mongodb": "^6.3.0",
+        "multer": "^1.4.2",
+        "nodemailer": "^6.4.11",
+        "passport": "^0.7.0",
+        "passport-azure-ad": "^4.3.4",
+        "passport-azure-ad-oauth2": "0.0.4",
+        "passport-facebook": "^3.0.0",
+        "passport-google-oauth2": "^0.2.0",
+        "passport-linkedin-oauth2": "^2.0.0",
+        "passport-microsoft": "^1.0.0",
+        "puppeteer": "^20.1.2",
+        "serve-static": "^1.14.1",
+        "sharp": "^0.33.2",
+        "stripe": "^8.167.0",
+        "websocket": "^1.0.34"
+    }
+}

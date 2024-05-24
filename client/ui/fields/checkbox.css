@@ -1,0 +1,24 @@
+/* CHECKBOX FIELD */
+.a-checkbox {
+    display: flex;
+    margin: 0px;
+    padding: var(--field-padding);
+    cursor: pointer;
+}
+
+/* Hide the "real" checkbox (which is ugly and depends on the browser */
+.field-checkbox {
+    display: none;
+}
+
+/* CHECKBOX ICON */
+.field-checkbox-icon {
+    padding: var(--field-padding);
+    font-size: 20px;
+    cursor: inherit;
+}
+
+.field-checkbox-read-only {
+    cursor: default;
+}
+/* /CHECKBOX FIELD */
