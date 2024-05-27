@@ -222,6 +222,8 @@ if (
 //
 module.exports = {
 	setup: env.SETUP,
+	multiTenant: env.MULTI_TENANT,
+	interactive: env.INTERACTIVE_MODE,
 	release: env.RELEASE,
 	envName: env.ENV_NAME,
 	host: env.HOST,

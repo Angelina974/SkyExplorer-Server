@@ -254,7 +254,7 @@ const authentication = {
 				userId: token.userId
 			})
 
-			// Send an event to the user who sent the invitation, to update his directory
+			// Send an event to the user who sent the invitation (= the host account), to update his directory
 			kiss.websocket.publish(currentAccountId, "*+", {
 				channel: "EVT_COLLABORATION:SENT"
 			})
@@ -598,7 +598,7 @@ const authentication = {
 
 		// Two cases:
 		//
-		// The user had already made an attempt to create its account, so we just send him a new mail
+		// The user had already made an attempt to create his account, so we just send him a new mail
 		// again, ignoring the last entries (to avoid an account steeling in registration phase!)
 		//
 		// - OR -
@@ -650,7 +650,11 @@ const authentication = {
 				_id: activationId
 			})
 
-			if (!registrant) return new NotFound("Registration not found!")
+			if (!registrant) {
+				log.err("authentication.activate - No registrant found for this activationId: " + activationId)
+				log.info("Redirecting to login page: " + config.authentication.redirectTo.login)
+				return res.redirect(301, config.authentication.redirectTo.login)
+			}
 
 			const {
 				email,
@@ -667,13 +671,17 @@ const authentication = {
 
 			// From here, there are 2 scenarios:
 			//
-			// A) The pending registration doesn't have a user
-			// It means it's a user who registered directly without any invitation: we need to create an independant account for him/her
-			//
+			// A) The pending registration doesn't have a "user" attribute
+			// It means it's a user who registered directly without any invitation: we need to create an independant account for him/her.
+			// 
+			// Important: if the server is not setup as a multi-tenant server, then:
+			// . the 1st created account will be the main admin account
+			// . new users will be automatically connected to the 1st created account
+			// 
 			// - OR -
 			//
-			// B) The pending registration already has a user: it means it was generated from an invitation.
-			// As a result, it's a **GUEST** account, so we must create him a guest account AND make him join the host account.
+			// B) The pending registration has a "user" attribute: it means it was generated from an invitation.
+			// As a result, it's a **GUEST** account, so we must create him a guest account AND make him/her join the host account.
 			if (!user) {
 
 				// Scenario A)
@@ -687,6 +695,25 @@ const authentication = {
 				const accountObject = createAccountObject(accountId, registrant.email, {
 					plan: ACCOUNT_PLAN.TRIAL
 				})
+
+				// If the server is not multi-tenant, then the first account created will be the main admin account
+				// New users will be automatically connected to this account
+				if (config.multiTenant === "false") {
+					log.info("authentication.activate - Multi-tenant mode is OFF")
+					
+					if (kiss.directory.getAccounts().length === 0) {
+						log.info("authentication.activate - First account created, it will be the main admin account of this server")
+					}
+					else {
+						log.info("authentication.activate - New account created, it will be a guest account of the main admin account: " + userObject.email)
+						
+						const firstAccount = kiss.directory.getFirstAccount()
+						userObject.isCollaboratorOf = [firstAccount.id]
+						userObject.plan = ACCOUNT_PLAN.GUEST
+						userObject.currentAccountId = firstAccount.id
+						userObject.preferredAccount = firstAccount.id
+					}
+				}
 
 				// Creates a new account
 				await kiss.db.insertOne("account", accountObject)

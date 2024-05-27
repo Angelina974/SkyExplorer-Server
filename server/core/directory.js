@@ -67,6 +67,26 @@ module.exports = {
     },
 
     /**
+     * Get all the accounts, sorted by creation date
+     * 
+     * @returns {object[]} Array of accounts
+     */
+    getAccounts() {
+        return Object.keys(this.accounts).map(accountId => this.accounts[accountId]).sort((a, b) => a.createdAt - b.createdAt)
+    },
+
+    /**
+     * Get the first account
+     * This is used to get the main account when the server is not multi-tenant
+     * 
+     * @returns {object} First created account
+     */
+    getFirstAccount() {
+        const accounts = this.getAccounts()
+        return accounts[0]
+    },
+
+    /**
      * Get all the users of an account
      * 
      * @param {string} accountId 
@@ -76,36 +96,91 @@ module.exports = {
         return this.users[accountId]
     },
 
+    /**
+     * Get a user from an account
+     * 
+     * @param {string} accountId
+     * @param {string} userId
+     * @returns {object} A user
+     */    
     getUser(accountId, userId) {
         return this.users[accountId][userId]
     },
 
+    /**
+     * Get all the groups of an account
+     * 
+     * @param {string} accountId 
+     * @returns {object} Hash of users
+     */    
     getGroups(accountId) {
         return this.groups[accountId]
     },
 
+    /**
+     * Get a group from an account
+     * 
+     * @param {string} accountId
+     * @param {string} groupId
+     * @returns {object} A group
+     */     
     getGroup(accountId, groupId) {
         return this.groups[accountId][groupId]
     },
 
+    /**
+     * Get all the groups a user belongs to
+     * 
+     * @param {string} accountId
+     * @param {string} userId
+     * @returns {string[]} The list of group ids
+     */      
     getUserGroups(accountId, userId) {
         if (!this.users[accountId]) return []
         if (!this.users[accountId][userId]) return []
         return this.users[accountId][userId].groups || []
     },
 
+    /**
+     * Get all the names by which a user can be identified in an account
+     * 
+     * @param {string} accountId
+     * @param {string} userId
+     * @returns {string[]} The list of names, including the groups the user belongs to
+     */  
     getUserACL(accountId, userId) {
         return ["*", userId].concat(this.getUserGroups(accountId, userId))
     },
 
+    /**
+     * Get a user or a group from an account
+     * 
+     * @param {string} accountId
+     * @param {string} entryId
+     * @returns {object} The directory entry
+     */      
     getEntry(accountId, entryId) {
         return this.getUser(accountId, entryId) || this.getGroup(accountId, entryId)
     },
 
+    /**
+     * Get all the users or groups which ids are in the given list
+     * 
+     * @param {string} accountId
+     * @param {string} entryIds
+     * @returns {object[]} The directory entry list
+     */  
     getEntries(accountId, entryIds) {
         return entryIds.map(entryId => this.getEntry(accountId, entryId)).filter(entry => !!entry)
     },
 
+    /**
+     * Get an entry name (user or group) from its id
+     * 
+     * @param {string} accountId
+     * @param {string} entryId
+     * @returns {string} The entry name
+     */     
     getEntryName(accountId, entryId) {
         const entry = this.getEntry(accountId, entryId)
         if (!entry) return entryId
@@ -123,6 +198,13 @@ module.exports = {
         }
     },
 
+    /**
+     * Get all the entry names (user or group) from their ids
+     * 
+     * @param {string} accountId
+     * @param {string} entryId
+     * @returns {string[]} The entry name list
+     */      
     getEntryNames(accountId, entryIds) {
         entryIds = [].concat(entryIds)
         return entryIds.map(entryId => this.getEntryName(accountId, entryId))

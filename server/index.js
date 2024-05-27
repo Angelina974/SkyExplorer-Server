@@ -11,6 +11,9 @@
 // KissJS main library modules
 require("./kiss")
 
+// KissJS configuration
+const config = require("./config")
+
 // KissJS isomorphic modules (client/server)
 kiss.loader.loadDirectory("../../common")
 
@@ -38,7 +41,7 @@ processGlobalHandlers.init(application);
 	})
 })
 
-// Use interactive mode for local development only
+// Launch application
 application.init({
-	interactive: true
+	interactive: config.interactive
 })
