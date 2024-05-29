@@ -669,6 +669,9 @@ const authentication = {
 
 			const user = await kiss.db.findOne("user", query)
 
+			// Get the number of existing accounts
+			const numberOfAccounts = kiss.directory.getAccounts().length
+
 			// From here, there are 2 scenarios:
 			//
 			// A) The pending registration doesn't have a "user" attribute
@@ -691,7 +694,18 @@ const authentication = {
 				userObject.active = true
 				userObject.createdAt = new Date().toISOString()
 
-				const accountId = kiss.tools.uid()
+				let accountId
+				const SINGLE_TENANT_ID = config.singleTenantId
+
+				if (config.multiTenant === "false" && numberOfAccounts == 0) {
+					// Single-tenant mode: the first account created will be the main admin account, with a predefined ID
+					// All subsequent users will be connected to this account
+					accountId = SINGLE_TENANT_ID
+				}
+				else {
+					accountId = kiss.tools.uid()
+				}
+
 				const accountObject = createAccountObject(accountId, registrant.email, {
 					plan: ACCOUNT_PLAN.TRIAL
 				})
@@ -701,17 +715,16 @@ const authentication = {
 				if (config.multiTenant === "false") {
 					log.info("authentication.activate - Multi-tenant mode is OFF")
 					
-					if (kiss.directory.getAccounts().length === 0) {
+					if (numberOfAccounts === 0) {
 						log.info("authentication.activate - First account created, it will be the main admin account of this server")
 					}
 					else {
 						log.info("authentication.activate - New account created, it will be a guest account of the main admin account: " + userObject.email)
 						
-						const firstAccount = kiss.directory.getFirstAccount()
-						userObject.isCollaboratorOf = [firstAccount.id]
+						userObject.isCollaboratorOf = [SINGLE_TENANT_ID]
 						userObject.plan = ACCOUNT_PLAN.GUEST
-						userObject.currentAccountId = firstAccount.id
-						userObject.preferredAccount = firstAccount.id
+						userObject.currentAccountId = SINGLE_TENANT_ID
+						userObject.preferredAccount = SINGLE_TENANT_ID
 					}
 				}
 
@@ -758,7 +771,7 @@ const authentication = {
 				})
 
 				// Update the server directory cache
-				kiss.directory.addUser(pendingUser)
+				kiss.directory.updateUser(pendingUser)
 			}
 
 			// Delete the pending registration

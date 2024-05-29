@@ -339,9 +339,12 @@ module.exports = {
 
 	/**
 	 * Check if a user can access a custom model.
-	 * Dynamic models belong to a specific Account, and the connected user must belong to the same account to access them
+	 * Dynamic models belong to a specific Account, and the connected user must belong to the same account to access them.
+	 * Important: this middleware is skipped if the multiTenant option is disabled.
 	 */
 	async protectAccessToDynamicModels(req, res, next) {
+		if (config.multiTenant === "false") return next()
+
 		try {
 			const modelId = req.path_0
 			const token = req.token

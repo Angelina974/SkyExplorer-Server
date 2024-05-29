@@ -6,8 +6,9 @@
 const wwwController = require("../controllers/www")
 const defaultController = require("../controllers/default")
 const authenticationController = require("../controllers/authentication")
-const commandController = require("../controllers/command")
+const relationshipsController = require("../controllers/relationships")
 const filesController = require("../controllers/files")
+const commandController = require("../controllers/command")
 const subscription = require("../controllers/stripeSubscription")
 
 module.exports = {
@@ -18,6 +19,13 @@ module.exports = {
     "getEnvironment": (req, res) => res.json({
         environment: process.env.NODE_ENV
     }),
+
+    // Tokens
+    "checkTokenValidity": authenticationController.checkTokenValidity,
+    "refreshToken": authenticationController.refreshToken,
+    "createApiToken": authenticationController.createApiToken,
+    "revokeApiToken": authenticationController.revokeApiToken,
+    "getApiClients": authenticationController.getApiClients,
 
     // Registration
     "register": authenticationController.register,
@@ -45,13 +53,6 @@ module.exports = {
     "acceptInvitationOf": authenticationController.acceptInvitationOf,
     "rejectInvitationOf": authenticationController.rejectInvitationOf,
     "getCollaborators": authenticationController.getCollaborators,
-
-    // Tokens
-    "checkTokenValidity": authenticationController.checkTokenValidity,
-    "refreshToken": authenticationController.refreshToken,
-    "createApiToken": authenticationController.createApiToken,
-    "revokeApiToken": authenticationController.revokeApiToken,
-    "getApiClients": authenticationController.getApiClients,
 
     // Stripe subscription
     "getSubscriptionPlans": subscription.getSubscriptionPlans,
@@ -92,17 +93,25 @@ module.exports = {
     // The middleware "routeToController" will route all requests with RFC4122 format to this controller
     "data": defaultController.process,
 
+    // Controller to save view parameters
+    "view": defaultController.process,
+
     // Controller for bulk operations (which can impact multiple and mixed collections)
     "bulk": defaultController.process,
-
-    // "Link" records hold all the relationships between records
-    "link": defaultController.process,
 
     // Store data deleted using soft deletion
     "trash": defaultController.process,
 
     // File records hold the file uploads informations (stored locally or externally on Amazon S3)
     "file": defaultController.process,
+
+    // "Link" records hold all the relationships between records
+    "link": defaultController.process,
+
+    // Relationships controller
+    "updateLink": relationshipsController.updateLink,
+    "updateAllDeep": relationshipsController.updateAllDeep,
+    "updateFieldsRelationships": relationshipsController.updateFieldsRelationships,
 
     // Generic command controller allows to send non-REST commands to the API
     // Examples: /command/workflow/start, /command/template/generate, /command/import/analyze

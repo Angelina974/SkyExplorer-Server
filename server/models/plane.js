@@ -8,19 +8,37 @@ kiss.app.defineModel({
     items: [
         {
             id: "planeId",
-            dataType: String
+            type: "text",
+            label: "Immatriculation"
         },
         {
             id: "planeBrand",
-            dataType: String
+            type: "text",
+            label: "Marque"
         },
         {
             id: "planeType",
-            dataType: String
+            type: "text",
+            label: "Type"
         },
         {
             id: "hourPrice",
-            dataType: Number
+            type: "number",
+            unit: "€/h",
+            label: "Tarif horaire"
+        },
+        {
+            id: "flights",
+            type: "link",
+            label: "Vols",
+            canCreateRecord: true,
+            canDeleteLinks: true,
+            canLinkRecords: false,
+            multiple: true,
+            link: {
+                modelId: "flight",
+                fieldId: "planeId"
+            }
         }
     ]
 });

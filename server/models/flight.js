@@ -3,48 +3,109 @@ kiss.app.defineModel({
     name: "Vol",
     namePlural: "Vols",
     icon: "fas fa-clipboard",
-    color: "#00aaee",
+    color: "#9700ee",
 
     items: [
         {
             id: "date",
-            dataType: Date
+            type: "date",
+            label: "Date du vol",
+            value: "today"
         },
         {
             id: "time",
-            dataType: String
+            type: "select",
+            label: "Heure du vol",
+            template: "time",
+            min: 7,
+            max: 19,
+            interval: 60
         },
         {
             id: "client",
-            dataType: String
+            type: "text",
+            label: "Client"
         },
         {
             id: "type",
-            dataType: String
+            type: "select",
+            label: "Type de vol",
+            options: [
+                {
+                    label: "Formation",
+                    value: "formation",
+                    color: "#00aaee"
+                },
+                {
+                    label: "Loisir",
+                    value: "loisir",
+                    color: "#ee3333"
+                }
+            ]
         },
         {
             id: "duration",
-            dataType: Number
+            type: "number",
+            unit: "mn",
+            label: "Durée du vol"
         },
         {
             id: "description",
-            dataType: String
+            type: "text",
+            label: "Description du vol"
         },
         {
             id: "planeId",
-            dataType: String
+            type: "link",
+            label: "Avion",
+            canCreateRecord: true,
+            canDeleteLinks: true,
+            canLinkRecords: false,
+            multiple: false,
+            link: {
+                modelId: "plane",
+                fieldId: "flights"
+            }
         },
         {
             id: "planeBrand",
-            dataType: String
+            type: "lookup",
+            label: "Marque d'avion",
+            computed: true,
+            lookup: {
+                linkId: "planeId",
+                fieldId: "planeBrand"
+            }
         },
         {
             id: "planeType",
-            dataType: String
+            type: "lookup",
+            label: "Type d'avion",
+            computed: true,
+            lookup: {
+                linkId: "planeId",
+                fieldId: "planeType"
+            }
         },
         {
             id: "hourPrice",
-            dataType: Number
+            type: "lookup",
+            label: "Tarif horaire",
+            unit: "€HT/h",
+            computed: true,
+            lookup: {
+                linkId: "planeId",
+                fieldId: "hourPrice",
+                type: "number"
+            }
+        },
+        {
+            id: "totalPrice",
+            type: "number",
+            unit: "€HT",
+            label: "Prix total du vol",
+            computed: true,
+            formula: "ROUND ( {{Tarif horaire}} * {{Durée du vol}} / 60, 2 )"
         }
     ]
 });

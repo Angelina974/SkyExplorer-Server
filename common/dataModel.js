@@ -1392,7 +1392,7 @@ kiss.data.Model = class {
         } else {
             await kiss.ajax.request({
                 showLoading: true,
-                url: "/command/computedFields/updateAllDeep",
+                url: "/updateAllDeep",
                 method: "post",
                 body: JSON.stringify({
                     modelId: this.id
@@ -1731,12 +1731,12 @@ kiss.data.Model = class {
                 // Show the relationships in the console
                 let hasMany = field.multiple
                 let toModel = (hasMany) ? targetLinkModel.namePlural : targetLinkModel.name
-                // log(`kiss.data.Model - ${this.name.padEnd(40, " ")} -> ${(hasMany) ? "N" : "1"} ${toModel.padEnd(40, " ")}` + " (link field: " + field.label + ")")
+                log(`kiss.data.Model - ${this.name.padEnd(40, " ")} -> ${(hasMany) ? "N" : "1"} ${toModel.padEnd(40, " ")}` + " (link field: " + field.label + ")")
 
             } catch (err) {
                 // Problem, the foreign model does not exist
                 field.type = "text"
-                // modelProblems.push(`kiss.data.Model - The link field <${this.name + " / " + field.label}> points to a foreign model that can't be found`)
+                modelProblems.push(`kiss.data.Model - The link field <${this.name + " / " + field.label}> points to a foreign model that can't be found`)
             }
         })
 
@@ -1773,7 +1773,7 @@ kiss.data.Model = class {
             } catch (err) {
                 // Problem, the foreign model does not exist
                 field.type = "text"
-                // modelProblems.push(`kiss.data.Model - The lookup field <${this.name + " / " + field.label}> points to a model that can't be found`)
+                modelProblems.push(`kiss.data.Model - The lookup field <${this.name + " / " + field.label}> points to a model that can't be found`)
             }
         })
 
@@ -1810,7 +1810,7 @@ kiss.data.Model = class {
             } catch (err) {
                 // Problem, the foreign model does not exist
                 field.type = "text"
-                // modelProblems.push(`kiss.data.Model - The summary field <${this.name + " / " + field.label}> points to a model that can't be found`)
+                modelProblems.push(`kiss.data.Model - The summary field <${this.name + " / " + field.label}> points to a model that can't be found`)
             }
         })
 

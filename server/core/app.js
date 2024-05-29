@@ -3,6 +3,8 @@
  * kiss.app
  * 
  */
+const config = require("../config")
+
 module.exports = {
     models: {},
     accounts: {},
@@ -285,6 +287,12 @@ module.exports = {
      */
     defineModelRelationships() {
         Object.values(kiss.app.models).forEach(model => {
+
+            // In single tenant mode, all models are linked to the same account
+            if (config.multiTenant === "false") {
+                model.accountId = config.singleTenantId
+            }
+
             model._defineRelationships()
         })
     },

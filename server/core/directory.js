@@ -76,17 +76,6 @@ module.exports = {
     },
 
     /**
-     * Get the first account
-     * This is used to get the main account when the server is not multi-tenant
-     * 
-     * @returns {object} First created account
-     */
-    getFirstAccount() {
-        const accounts = this.getAccounts()
-        return accounts[0]
-    },
-
-    /**
      * Get all the users of an account
      * 
      * @param {string} accountId 
@@ -255,9 +244,9 @@ module.exports = {
         user.groups = this.findUserGroups(user)
         this.users[accountId][user.email] = user
 
-	    user.isCollaboratorOf.forEach(accountId => {
-		    if(!this.users[accountId]) this.users[accountId] = {}
-		    this.users[accountId][user.email] = user
+	    user.isCollaboratorOf.forEach(collaborationAccountId => {
+		    if(!this.users[collaborationAccountId]) this.users[collaborationAccountId] = {}
+		    this.users[collaborationAccountId][user.email] = user
 	    })
     },
 

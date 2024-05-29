@@ -223,6 +223,7 @@ if (
 module.exports = {
 	setup: env.SETUP,
 	multiTenant: env.MULTI_TENANT,
+	singleTenantId: env.SINGLE_TENANT_ID,
 	interactive: env.INTERACTIVE_MODE,
 	release: env.RELEASE,
 	envName: env.ENV_NAME,
