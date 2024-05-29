@@ -51,6 +51,10 @@ module.exports = {
             const acl = (kiss.tools.isUid(modelId)) ? kiss.app.models.dynamicModel.acl : model.acl
 
             // No acl defined = everyone has access
+            log.info("Model is: " + modelId)
+            log.info("ACL is:")
+            log(acl)
+
             if (!acl) return true
 
             // No permissions defined = everyone has access
@@ -66,6 +70,7 @@ module.exports = {
             if (req.method == "post") {
                 // For post method, the record is the body
                 record = req.body
+                record.accountId = req.token.currentAccountId
             }
             else if ((req.method == "patch" || req.method == "delete") && id) {
                 // For patch and delete methods, we get the existing record
@@ -75,6 +80,12 @@ module.exports = {
                 record = await kiss.db.findOne(modelId + suffix, {
                     _id: id
                 })
+            }
+
+            // The user must be connected to the account owning the record
+            if (!kiss.tools.isUid(modelId) && record.accountId != req.token.currentAccountId) {
+                log.warn(`kiss.acl.check (server) - Error: the record ${modelId} / ${record.id} is accessed by a user (${req.token.userId}) not connected to the account owning the record.`)
+                return false
             }
 
             // Check every rule
@@ -97,7 +108,7 @@ module.exports = {
                         // Flag if a condition fails
                         if (permissionCheck != ruleTestValue) hasPermission = false
 
-                        // log(`kiss.acl.check (server) for ${req.token.userId} - ${action} - Model: ${model.name} - Permission: ${validator} = ${permissionCheck} - Access ${(hasPermission) ? "granted" :  "denied"}`)
+                        log(`kiss.acl.check (server) for ${req.token.userId} - ${action} - Model: ${model.name} - Permission: ${validator} = ${permissionCheck} - Access ${(hasPermission) ? "granted" :  "denied"}`)
 
                     } else {
                         log(`kiss.acl.check (server) - Error: validator function <${validator}> is not defined for model ${modelId}`)

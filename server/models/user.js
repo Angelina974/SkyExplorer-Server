@@ -6,90 +6,49 @@ kiss.app.defineModel({
     color: "#00aaee",
 
     items: [{
-            id: "accountId",
-            dataType: String
+            id: "accountId"
         },
         {
             id: "email",
-            primary: true,
-            dataType: String
+            type: "text",
+            label: "Email",
+            primary: true
         },
         {
             id: "firstName",
-            dataType: String
+            type: "text",
+            label: "Prénom"
         },
         {
             id: "lastName",
-            dataType: String
+            type: "text",
+            label: "Nom"
         },
         {
-            id: "name", // firstName + " " + lastName
-            dataType: String
+            id: "active"
         },
         {
-            id: "active",
-            dataType: Boolean
+            id: "password"
         },
         {
-            id: "loginType", // google, facebook...
-            dataType: String
+            id: "isCollaboratorOf"
         },
         {
-            id: "socialId", // internal id for social auth
-            dataType: String
+            id: "invitedBy"
         },
         {
-            id: "sessionToken", // token for external auth
-            dataType: String
-        },
-        {
-            id: "password",
-            dataType: String
-        },
-        {
-            id: "language",
-            dataType: String
-        },
-        {
-            id: "isCollaboratorOf",
-            dataType: Array
-        },
-        {
-            id: "invitedBy",
-            dataType: Array
-        },
-        {
-            id: "currentAccountId",
-            dataType: String
+            id: "currentAccountId"
         }
     ],
 
     acl: {
         permissions: {
-            create: [{
-                    isOwner: true,
-                    quotaNotExceeded: true
-                },
-                {
-                    isManager: true,
-                    quotaNotExceeded: true
-                }
-            ],
             update: [{
                     isOwner: true
-                },
-                {
-                    isManager: true
-                },
-                {
-                    isConnectedUser: true
                 }
             ],
             delete: [{
                     isOwner: true
-                },
-                {
-                    isManager: true
                 }
             ]
         },
@@ -99,30 +58,6 @@ kiss.app.defineModel({
                 req
             }) {
                 return (kiss.isServer) ? req.token.isOwner : kiss.session.isAccountOwner()
-            },
-
-            async isManager({
-                req
-            }) {
-                return (kiss.isServer) ? req.token.isManager : kiss.session.isAccountManager()
-            },
-
-            async quotaNotExceeded() {
-                if (kiss.isClient) {
-                    const currentNumberOfUsers = kiss.app.collections.user.records.length
-                    const allowedNumberOfUsers = Number(kiss.session.account.planUsers)
-                    if (currentNumberOfUsers >= allowedNumberOfUsers) return false
-                    return true
-                }
-            },
-
-            async isConnectedUser({
-                req,
-                record
-            }) {
-                const userId = (kiss.isServer) ? req.token.userId : kiss.session.getUserId()
-                if (userId == record.email) return true
-                return false
             }
         }
     }

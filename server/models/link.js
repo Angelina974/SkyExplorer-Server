@@ -11,7 +11,7 @@
  */
 kiss.app.defineModel({
     id: "link",
-    splitBy: "account",
+    // splitBy: "account",
 
     name: "Link",
     namePlural: "Links",

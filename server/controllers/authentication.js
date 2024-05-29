@@ -43,6 +43,7 @@ const ACCOUNT_PLAN_STATE = {
 
 /**
  * Generate token and refreshToken with fresh infos
+ * 
  * @private
  * @param {string} userId
  * @param {string} accountId

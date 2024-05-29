@@ -8,6 +8,7 @@
  * (for example, some model have their data dispatched in one collection per tenant)
  *
  */
+const config = require("../config")
 const {
 	API: {
 		Forbidden,
@@ -417,8 +418,6 @@ module.exports = {
 			_id: id
 		})
 
-		// TODO: PROJECTION TO REMOVE SECURED / HIDDEN FIELDS
-
 		res.status(200).send(record || false)
 	},
 
@@ -446,19 +445,15 @@ module.exports = {
 		const suffix = req.targetCollectionSuffix || ""
 		const modelId = req.path_0
 		const token = req.token
-		let query
+		let query = {}
 
 		// log("kiss.db.find: " + modelId)
 
-		if (kiss.tools.isUid(modelId) || suffix) {
-			// Dynamic models are not shared between accounts, no need to filter their data by account
-			query = {}
-		} else {
-			// Static models are shared between accounts.
-			// For them, data must be filtered by account
-			query = {
-				accountId: token.currentAccountId
-			}
+		// Static models are shared between accounts.
+		// For this, data must be filtered by account, except when the server is in single tenant mode.
+		// Dynamic models are not shared between accounts, no need to filter their data by account
+		if (!kiss.tools.isUid(modelId) && !suffix && config.multiTenant !== "false") {
+			query.accountId = token.currentAccountId
 		}
 
 		let records = await kiss.db.find(modelId + suffix, query)
@@ -495,9 +490,9 @@ module.exports = {
 		}
 
 		// Static models are shared between accounts.
-		// For them, data must be filtered by accountId.
+		// For this, data must be filtered by accountId, except when the server is in single tenant mode.
 		// Dynamic models are not shared between accounts, no need to filter.
-		if (!kiss.tools.isUid(modelId) && !suffix) {
+		if (!kiss.tools.isUid(modelId) && !suffix && config.multiTenant !== "false") {
 			body.filter.accountId = token.currentAccountId
 		}
 
