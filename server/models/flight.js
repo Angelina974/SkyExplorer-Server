@@ -55,7 +55,7 @@ kiss.app.defineModel({
             label: "Description du vol"
         },
         {
-            id: "planeId",
+            id: "plane",
             type: "link",
             label: "Avion",
             canCreateRecord: true,
@@ -68,12 +68,22 @@ kiss.app.defineModel({
             }
         },
         {
+            id: "planeId",
+            type: "lookup",
+            label: "Immatriculation",
+            computed: true,
+            lookup: {
+                linkId: "plane",
+                fieldId: "planeId"
+            }
+        },        
+        {
             id: "planeBrand",
             type: "lookup",
             label: "Marque d'avion",
             computed: true,
             lookup: {
-                linkId: "planeId",
+                linkId: "plane",
                 fieldId: "planeBrand"
             }
         },
@@ -83,7 +93,7 @@ kiss.app.defineModel({
             label: "Type d'avion",
             computed: true,
             lookup: {
-                linkId: "planeId",
+                linkId: "plane",
                 fieldId: "planeType"
             }
         },
@@ -94,7 +104,7 @@ kiss.app.defineModel({
             unit: "€HT/h",
             computed: true,
             lookup: {
-                linkId: "planeId",
+                linkId: "plane",
                 fieldId: "hourPrice",
                 type: "number"
             }

@@ -37,7 +37,7 @@ kiss.app.defineModel({
             multiple: true,
             link: {
                 modelId: "flight",
-                fieldId: "planeId"
+                fieldId: "plane"
             }
         }
     ]
