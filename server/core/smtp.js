@@ -23,7 +23,9 @@ module.exports = {
                 user: config.smtp.user,
                 pass: config.smtp.password
             },
-
+            tls: {
+                rejectUnauthorized: false
+            }
             // TODO
             // dkim: {
             //     keys: [
@@ -107,7 +109,9 @@ module.exports = {
                         user,
                         pass: password
                     },
-        
+                    tls: {
+                        rejectUnauthorized: false
+                    }
                     // TODO
                     // dkim: {
                     //     keys: [
