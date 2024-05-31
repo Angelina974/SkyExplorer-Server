@@ -116,6 +116,19 @@ kiss.app.defineModel({
             label: "Prix total du vol",
             computed: true,
             formula: "ROUND ( {{Tarif horaire}} * {{Durée du vol}} / 60, 2 )"
+        },
+        {
+            id: "invoice",
+            type: "link",
+            label: "Facture",
+            canCreateRecord: true,
+            canDeleteLinks: true,
+            canLinkRecords: false,
+            multiple: false,
+            link: {
+                modelId: "invoice",
+                fieldId: "flightId"
+            }
         }
     ]
 });
