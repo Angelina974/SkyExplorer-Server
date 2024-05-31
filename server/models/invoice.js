@@ -7,36 +7,10 @@ kiss.app.defineModel({
 
     items: [
         {
-            id: "client",
+            id: "invoiceId",
             type: "text",
-            label: "Client",
-            lookup: {
-                modelId: "user",
-                fieldId: "fisrtName"
-            }
-        },
-        {
-            id: "flights",
-            type: "link",
-            label: "Vols",
-            canCreateRecord: true,
-            canDeleteLinks: true,
-            canLinkRecords: false,
-            multiple: true,
-            link: {
-                modelId: "flight",
-                fieldId: "plane"
-            }
-        },
-        {
-            id: "flightId",
-            type: "lookup",
-            label: "Identifiant du vol",
-            computed: true,
-            lookup: {
-                linkId: "flight",
-                fieldId: "flightId"
-            }
+            label: "Référence",
+            value: "unid"
         },
         {
             id: "date",
@@ -44,12 +18,94 @@ kiss.app.defineModel({
             label: "Date de la facture",
             value: "today"
         },
+        // Liaison avec le modèle flight avec un champ "link"
         {
-            id: "invoiceId",
-            type: "text",
-            label: "Référence",
-            
+            id: "flight",
+            type: "link",
+            label: "ID du vol",
+            canCreateRecord: false,
+            canDeleteLinks: true,
+            canLinkRecord: false,
+            multiple: false,
+            link: {
+                modelId: "flight",
+                fieldId: "invoice"
+            }
         },
+        // Récupération des informations du vol avec des champs "lookup"
+        // - ID du vol
+        {
+            id: "flightId",
+            type: "lookup",
+            label: "ID du vol",
+            computed: true,
+            lookup: {
+                modelId: "flight",
+                fieldId: "flightId",
+                type: "text"
+            }
+        },
+        // - ID de l'avion
+        {
+            id: "flightPlaneId",
+            type: "lookup",
+            label: "Avion",
+            computed: true,
+            lookup: {
+                modelId: "flight",
+                fieldId: "planeId",
+                type: "text"
+            }
+        },
+        // - Date du vol
+        {
+            id: "flightDate",
+            type: "lookup",
+            label: "Date du vol",
+            computed: true,
+            lookup: {
+                modelId: "flight",
+                fieldId: "date",
+                type: "date"
+            }
+        },
+        // - Type du vol
+        {
+            id: "flightDate",
+            type: "lookup",
+            label: "Type du vol",
+            computed: true,
+            lookup: {
+                modelId: "flight",
+                fieldId: "type",
+                type: "text"
+            }
+        },
+        // - Durée du vol
+        {
+            id: "flightDuration",
+            type: "lookup",
+            label: "Durée du vol",
+            computed: true,
+            lookup: {
+                modelId: "flight",
+                fieldId: "duration",
+                type: "number"
+            }
+        },                    
+        // - Client
+        {
+            id: "client",
+            type: "lookup",
+            label: "Client",
+            computed: true,
+            lookup: {
+                modelId: "flight",
+                fieldId: "client",
+                type: "text"
+            }
+        },
+        // - Prix du vol
         {
             id: "totalPrice",
             type: "lookup",
@@ -59,7 +115,8 @@ kiss.app.defineModel({
             lookup: {
                 linkId: "flight",
                 fieldId: "totalPrice",
+                type: "number"
             }
-        },
+        }
     ]
 });

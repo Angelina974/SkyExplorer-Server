@@ -27,7 +27,8 @@ kiss.routes.public = [
 kiss.routes.custom = {
     // Examples using default REST controller:
     plane: defaultController.process,
-    flight: defaultController.process
+    flight: defaultController.process,
+    invoice: defaultController.process
 
     // Examples using custom controllers:
     // workspace: require("./controllers/workspace"),
