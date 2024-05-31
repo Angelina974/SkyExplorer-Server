@@ -127,7 +127,7 @@ kiss.app.defineModel({
             multiple: false,
             link: {
                 modelId: "invoice",
-                fieldId: "flightId"
+                fieldId: "flights"
             }
         }
     ]

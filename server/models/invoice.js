@@ -16,16 +16,16 @@ kiss.app.defineModel({
             }
         },
         {
-            id: "flightId",
+            id: "flights",
             type: "link",
-            label: "Vol",
+            label: "Vols",
             canCreateRecord: true,
             canDeleteLinks: true,
             canLinkRecords: false,
-            multiple: false,
+            multiple: true,
             link: {
                 modelId: "flight",
-                fieldId: "invoice"
+                fieldId: "plane"
             }
         },
         {
@@ -54,11 +54,11 @@ kiss.app.defineModel({
             id: "totalPrice",
             type: "lookup",
             label: "Montant de la facture",
+            unit: "€HT/h",
             computed: true,
             lookup: {
                 linkId: "flight",
                 fieldId: "totalPrice",
-                type: "number"
             }
         },
     ]
