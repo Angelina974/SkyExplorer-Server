@@ -107,5 +107,25 @@ kiss.app.defineModel({
                 fieldId: "exercises"
             }
         }
-    ]
+    ],
+
+    acl: {
+        permissions: {
+            read: [{
+                isMyFlight: true
+            }]
+        },
+
+        validators: {
+            async isMyFlight({
+                record,
+                req
+            }) {
+                const userId = (kiss.isServer) ? req.token.userId : kiss.session.getUserId()
+                return record.client == userId
+            }
+        }
+    }
 })
+
+;
