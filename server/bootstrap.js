@@ -29,7 +29,6 @@ kiss.routes.custom = {
     plane: defaultController.process,
     flight: defaultController.process,
     invoice: defaultController.process,
-    formation: defaultController.process,
     training: defaultController.process,
     exercise: defaultController.process,
 
