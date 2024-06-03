@@ -31,7 +31,7 @@ kiss.routes.custom = {
     invoice: defaultController.process,
     formation: defaultController.process,
     training: defaultController.process,
-    exercice: defaultController.process,
+    exercise: defaultController.process,
 
     // Examples using custom controllers:
     // workspace: require("./controllers/workspace"),
