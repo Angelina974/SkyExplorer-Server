@@ -22,10 +22,10 @@ kiss.app.defineModel({
         {
             id: "flight",
             type: "link",
-            label: "ID du vol",
+            label: "Vol",
             canCreateRecord: false,
             canDeleteLinks: true,
-            canLinkRecord: false,
+            canLinkRecord: true,
             multiple: false,
             link: {
                 modelId: "flight",
@@ -71,7 +71,7 @@ kiss.app.defineModel({
         },
         // - Type du vol
         {
-            id: "flightDate",
+            id: "flightType",
             type: "lookup",
             label: "Type du vol",
             computed: true,
