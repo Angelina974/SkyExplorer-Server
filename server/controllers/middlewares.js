@@ -211,6 +211,7 @@ module.exports = {
 
 					// Add user ACL infos to the token
 					req.token.userACL = kiss.directory.getUserACL(payload.currentAccountId, payload.userId)
+					
 
 					// We have a token but no session. It may happen with some race condition.
 					// We must re-create it and refresh it with the next response :)
