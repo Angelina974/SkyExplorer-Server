@@ -3,7 +3,7 @@ kiss.app.defineModel({
     name: "Vol",
     namePlural: "Vols",
     icon: "fas fa-clipboard",
-    color: "#ee3500",
+    color: "var(--buttons-color)",
 
     items: [
         {
@@ -29,8 +29,8 @@ kiss.app.defineModel({
         },
         {
             id: "client",
-            type: "text",
-            label: "Client"
+            type: "directory",
+            label: "Pilote"
         },
         {
             id: "instructor",
@@ -44,12 +44,12 @@ kiss.app.defineModel({
             options: [
                 {
                     label: "Formation",
-                    value: "formation",
+                    value: "Formation",
                     color: "#00aaee"
                 },
                 {
                     label: "Loisir",
-                    value: "loisir",
+                    value: "Loisir",
                     color: "#ee3333"
                 }
             ]
@@ -146,10 +146,14 @@ kiss.app.defineModel({
             type: "link",
             label: "Exercices",
             multiple: true,
+            canLinkRecord: false,
+            canDeleteLinks: true,
             link: {
                 modelId: "exercise",
                 fieldId: "flight"
             }
         }
     ]
-});
+})
+
+;

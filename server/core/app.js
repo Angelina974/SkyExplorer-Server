@@ -235,7 +235,8 @@ module.exports = {
         let count = 0
 
         for (let account of accounts) {
-            let links = await kiss.db.find("link_" + account.id)
+            const linkCollectionId = (config.multiTenant === "false") ? "link" : "link_" + account.id
+            let links = await kiss.db.find(linkCollectionId)
             kiss.global.links[account.id] = links
             count += links.length
         }

@@ -78,7 +78,7 @@ kiss.app.defineModel({
             lookup: {
                 linkId: "flight",
                 fieldId: "type",
-                type: "text"
+                type: "select"
             }
         },
         // - Durée du vol
@@ -119,4 +119,6 @@ kiss.app.defineModel({
             }
         }
     ]
-});
+})
+
+;
