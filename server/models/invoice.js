@@ -158,7 +158,52 @@ kiss.app.defineModel({
                 },
             ]
         }
-    ]
+    ],
+
+    acl: {
+        permissions: {
+            create: [{
+                userType: "Administrateur"
+            }, {
+                userType: "Instructeur"
+            }],
+            read: [{
+                userType: "Administrateur"
+            }, {
+                userType: "Instructeur"
+            }],
+            update: [{
+                userType: "Administrateur"
+            }, {
+                userType: "Instructeur"
+            }],
+            delete: [{
+                userType: "Administrateur"
+            }, {
+                userType: "Instructeur"
+            }]
+        },
+
+        validators: {
+            async isOwner({
+                req
+            }) {
+                return (kiss.isServer) ? req.token.isOwner : kiss.session.isAccountOwner()
+            },
+
+            async userType({
+                req
+            }) {
+                if (kiss.isServer) {
+                    const accountUsers = kiss.directory.users[req.token.currentAccountId]
+                    const user = accountUsers[req.token.userId]
+                    return user.type
+                } else {
+                    return getUserType()
+                }
+            }
+        }
+    }      
 })
 
 ;

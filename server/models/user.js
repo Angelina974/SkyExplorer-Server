@@ -8,6 +8,7 @@ kiss.app.defineModel({
     items: [{
             id: "accountId"
         },
+        // Email de l'utilisateur
         {
             id: "email",
             type: "text",
@@ -15,14 +16,39 @@ kiss.app.defineModel({
             primary: true
         },
         {
-            id: "firstName",
-            type: "text",
-            label: "Prénom"
+            layout: "horizontal",
+            defaultConfig: {
+                width: "50%",
+                fieldWidth: "100%",
+                labelWidth: "100%",
+                labelPosition: "top"
+            },
+            
+            items: [
+                // Prénom
+                {
+                    id: "firstName",
+                    type: "text",
+                    label: "Prénom"
+                },
+                // Nom
+                {
+                    id: "lastName",
+                    type: "text",
+                    label: "Nom"
+                },
+            ]
         },
         {
-            id: "lastName",
-            type: "text",
-            label: "Nom"
+            id: "type",
+            type: "select",
+            label: "Type",
+            options: [
+                "Administrateur",
+                "Instructeur",
+                "Elève pilote",
+                "Pilote"
+            ]
         },
         {
             id: "active"
@@ -61,4 +87,6 @@ kiss.app.defineModel({
             }
         }
     }
-});
+})
+
+;

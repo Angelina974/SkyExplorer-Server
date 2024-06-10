@@ -198,6 +198,11 @@ module.exports = {
 			_id: id
 		}
 
+		console.log("#################################################################")
+		console.log(body)
+		console.log("--")
+		console.log(sanitizedObject)
+
 		// Update db
 		const suffix = req.targetCollectionSuffix || ""
 		await kiss.db.updateOne(modelId + suffix, query, sanitizedObject)
@@ -205,11 +210,21 @@ module.exports = {
 		// Handle special cases to keep server cache updated for:
 		// - models
 		// - groups
+		// - users
 		if (modelId == "model") {
 			kiss.app.updateModel(id, sanitizedObject)
 
 		} else if (modelId == "group") {
 			kiss.directory.updateGroup(token.currentAccountId, id, sanitizedObject)
+
+		} else if (modelId == "user") {
+			let accountUsers = kiss.directory.users[token.currentAccountId]
+			if (accountUsers) {
+				let user = accountUsers[sanitizedObject.email]
+				if (user) {
+					user.type = sanitizedObject.type
+				}
+			}
 		}
 
 		res.status(200).send(sanitizedObject)

@@ -5,8 +5,7 @@ kiss.app.defineModel({
     icon: "fas fa-clipboard",
     color: "var(--buttons-color)",
 
-    items: [
-        {
+    items: [{
             id: "flightId",
             type: "text",
             label: "Identifiant du vol",
@@ -36,13 +35,12 @@ kiss.app.defineModel({
             id: "instructor",
             type: "directory",
             label: "Instructeur"
-        },        
+        },
         {
             id: "type",
             type: "select",
             label: "Type de vol",
-            options: [
-                {
+            options: [{
                     label: "Formation",
                     value: "Formation",
                     color: "#00aaee"
@@ -87,7 +85,7 @@ kiss.app.defineModel({
                 linkId: "plane",
                 fieldId: "planeId"
             }
-        },        
+        },
         {
             id: "planeBrand",
             type: "lookup",
@@ -153,7 +151,47 @@ kiss.app.defineModel({
                 fieldId: "flight"
             }
         }
-    ]
+    ],
+
+    acl: {
+        permissions: {
+            create: [{
+                userType: "Administrateur"
+            }, {
+                userType: "Instructeur"
+            }],
+            update: [{
+                userType: "Administrateur"
+            }, {
+                userType: "Instructeur"
+            }],
+            delete: [{
+                userType: "Administrateur"
+            }, {
+                userType: "Instructeur"
+            }]
+        },
+
+        validators: {
+            async isOwner({
+                req
+            }) {
+                return (kiss.isServer) ? req.token.isOwner : kiss.session.isAccountOwner()
+            },
+
+            async userType({
+                req
+            }) {
+                if (kiss.isServer) {
+                    const accountUsers = kiss.directory.users[req.token.currentAccountId]
+                    const user = accountUsers[req.token.userId]
+                    return user.type
+                } else {
+                    return getUserType()
+                }
+            }
+        }
+    }
 })
 
 ;

@@ -83,10 +83,10 @@ module.exports = {
             }
 
             // The user must be connected to the account owning the record
-            if (!kiss.tools.isUid(modelId) && record.accountId != req.token.currentAccountId) {
-                log.warn(`kiss.acl.check (server) - Error: the record ${modelId} / ${record.id} is accessed by a user (${req.token.userId}) not connected to the account owning the record.`)
-                return false
-            }
+            // if (!kiss.tools.isUid(modelId) && record.accountId != req.token.currentAccountId) {
+            //     log.warn(`kiss.acl.check (server) - Error: the record ${modelId} / ${record.id} is accessed by a user (${req.token.userId}) not connected to the account owning the record.`)
+            //     return false
+            // }
 
             // Check every rule
             for (let rule of permissionRules) {
