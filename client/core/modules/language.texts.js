@@ -171,13 +171,13 @@ kiss.language.texts = {
     
     // Invitation email
     "#invitation subject": {
-        "en": "$user has invited you to his pickaform workspace",
-        "fr": "$user vous a invité sur son espace pickaform",
+        "en": "$user has invited you to his sky explorer workspace",
+        "fr": "$user vous a invité sur son espace sky explorer",
         "es": "$user te ha invitado a su espacio de trabajo pickaform"
     },
     "#invitation link": {
         "en": "You received an invitation to join the Pickaform workspace of $user.\nPlease, <a href=\"https://$host/join/$pendingUserId/$accountId\">click on this link</a> to accept the invitation!\nIf you can't open the link, try this address:\nhttps://$host/join/$pendingUserId/$accountId",
-        "fr": "Vous venez de recevoir une invitation à rejoindre $user sur son espace de travail Pickaform.\nMerci de <a href=\"https://$host/join/$pendingUserId/$accountId\">cliquer sur ce lien</a> pour accepter l'invitation\nSi vous ne parvenez pas à ouvrir le lien, essayez cette adresse:\nhttps://$host/join/$pendingUserId/$accountId",
+        "fr": "Vous venez de recevoir une invitation à rejoindre $user sur votre tableau de bord Sky Explorer.\nMerci de <a href=\"https://$host/join/$pendingUserId/$accountId\">cliquer sur ce lien</a> pour accepter l'invitation\nSi vous ne parvenez pas à ouvrir le lien, essayez cette adresse:\nhttps://$host/join/$pendingUserId/$accountId",
         "es": "Has recibido una invitación para unirte al espacio de trabajo Pickaform de $user.\nPor favor, <a href=\"https://$host/join/$pendingUserId/$accountId\">haz clic en este enlace</a> para aceptar la invitación!\nSi no puedes abrir el enlace, intenta con esta dirección:\nhttps://$host/join/$pendingUserId/$accountId"
     },
     // Welcome email
@@ -193,20 +193,20 @@ kiss.language.texts = {
     },
     // Password reset email
     "#password reset subject": {
-        "en": "pickaform: did you requested a password reset?",
-        "fr": "pickaform: avez-vous demandé une réinitialisation du mot de passe ?",
-        "es": "pickaform: ¿solicitaste un restablecimiento de contraseña?"
+        "en": "sky explorer: did you requested a password reset?",
+        "fr": "sky explorer: avez-vous demandé une réinitialisation du mot de passe ?",
+        "es": "sky explorer: ¿solicitaste un restablecimiento de contraseña?"
     },
     "#password reset body": {
-        "en": "if you requested a password reset,<br>please <a href=\"https://$host/client/pickaform/index.html#ui=authentication-reset-password&token=$token\">click on this link</a>.\nIf you can't open the link, try this address:\nhttps://$host/client/pickaform/index.html#ui=authentication-reset-password&token=$token",
-        "fr": "si vous avez fait une demande de réinitialisation de mot de passe<br>veuillez <a href=\"https://$host/client/pickaform/index.html#ui=authentication-reset-password&token=$token\">cliquer sur ce lien</a>.\nSi vous ne parvenez pas à ouvrir le lien, essayez cette adresse:\nhttps://$host/client/pickaform/index.html#ui=authentication-reset-password&token=$token",
-        "es": "si solicitaste un restablecimiento de contraseña,<br>por favor <a href=\"https://$host/client/pickaform/index.html#ui=authentication-reset-password&token=$token\">haz clic en este enlace</a>.\nSi no puedes abrir el enlace, intenta con esta dirección:\nhttps://$host/client/pickaform/index.html#ui=authentication-reset-password&token=$token"
+        "en": "if you requested a password reset,<br>please <a href=\"https://$host/index.html#ui=authentication-reset-password&token=$token\">click on this link</a>.\nIf you can't open the link, try this address:\nhttps://$host/index.html#ui=authentication-reset-password&token=$token",
+        "fr": "si vous avez fait une demande de réinitialisation de mot de passe<br>veuillez <a href=\"https://$host/index.html#ui=authentication-reset-password&token=$token\">cliquer sur ce lien</a>.\nSi vous ne parvenez pas à ouvrir le lien, essayez cette adresse:\nhttps://$host/client/pickaform/index.html#ui=authentication-reset-password&token=$token",
+        "es": "si solicitaste un restablecimiento de contraseña,<br>por favor <a href=\"https://$host/index.html#ui=authentication-reset-password&token=$token\">haz clic en este enlace</a>.\nSi no puedes abrir el enlace, intenta con esta dirección:\nhttps://$host/index.html#ui=authentication-reset-password&token=$token"
     },
     // Password changed email
     "#password changed subject": {
-        "en": "pickaform: password modified",
-        "fr": "pickaform: mot de passe modifié",
-        "es": "pickaform: contraseña modificada"
+        "en": "sky explorer: password modified",
+        "fr": "sky explorer: mot de passe modifié",
+        "es": "sky explorer: contraseña modificada"
     },
     "#password changed body": {
         "en": "you have successfully changed your password",
