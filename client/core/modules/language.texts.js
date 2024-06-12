@@ -188,7 +188,7 @@ kiss.language.texts = {
     },
     "#registration email": {
         "en": "thank you and welcome onboard!<br>Please, <a href=\"https://$host/activate/$validationId\">click on this link</a> to activate your account!\nIf you can't open the link, try this address:\nhttps://$host/activate/$validationId",
-        "fr": "merci et bienvenue à bord !<br>Veuillez <a href=\"https://$host/activate/$validationId\">cliquer sur ce lien</a> pour activer votre compte !\nSi vous ne parvenez pas à ouvrir le lien, essayez cette adresse:\nhttps://$host/activate/$validationId",
+        "fr": "merci et bienvenue à bord !<br>Veuillez <a href=\"https://$host/activate/$validationId\">cliquer sur ce lien</a> pour activer votre compte Sky Explorer !\nSi vous ne parvenez pas à ouvrir le lien, essayez cette adresse:\nhttps://$host/activate/$validationId",
         "es": "¡Gracias y bienvenido a bordo!<br>Por favor, <a href=\"https://$host/activate/$validationId\">haz clic en este enlace</a> para activar tu cuenta!\nSi no puedes abrir el enlace, intenta con esta dirección:\nhttps://$host/activate/$validationId"
     },
     // Password reset email

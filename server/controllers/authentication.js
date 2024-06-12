@@ -1627,10 +1627,10 @@ const authentication = {
             <div>
                 <table>
                     <tr>
-                        <td style="padding: 16px 32px 16px 32px; text-align: center; font-family: arial; font-size: 20px; font-weight: bold; color: #ffffff; background: #00aaee; border-radius: 16px;">
-                            pick<font color="#a1ed00">a</font>form
+                        <td style="padding: 16px 32px 16px 32px; text-align: center; font-family: arial; font-size: 20px; font-weight: bold; color: #ffffff; background: #000055; border-radius: 16px;">
+                            Sky Explorer
                         </td>
-                        <td style="padding: 16px 32px 16px 32px; font-family: arial; font-size: 16px; color: #00aaee;">
+                        <td style="padding: 16px 32px 16px 32px; font-family: arial; font-size: 16px; color: #000055;">
                             ${txt}
                         </td>
                     </tr>
