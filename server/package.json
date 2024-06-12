@@ -4,7 +4,8 @@
     "description": "",
     "main": "index.js",
     "scripts": {
-        "example": "env NODE_ENV=example node index"
+        "local": "env NODE_ENV=local node index",
+        "production": "env NODE_ENV=production node index"
     },
     "repository": {
         "type": "git",
