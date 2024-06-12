@@ -43,5 +43,5 @@ processGlobalHandlers.init(application);
 
 // Launch application
 application.init({
-	interactive: config.interactive
+	interactive: false
 })
