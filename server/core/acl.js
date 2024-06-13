@@ -51,11 +51,9 @@ module.exports = {
             const acl = (kiss.tools.isUid(modelId)) ? kiss.app.models.dynamicModel.acl : model.acl
 
             // No acl defined = everyone has access
-            log.info("Model is: " + modelId)
-            log.info("ACL is:")
-            log(acl)
-
-            if (!acl) return true
+            if (Object.keys(acl).length == 0) {
+                return true
+            }
 
             // No permissions defined = everyone has access
             const permissions = acl.permissions
