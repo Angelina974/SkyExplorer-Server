@@ -3,26 +3,47 @@ kiss.app.defineModel({
     name: "Question",
     namePlural: "Questions",
     icon: "fas fa-question",
-    color: "#00aaee",
+    color: "var(--skyexplorer-color)",
 
     items: [
         {
-            id: "student",
-            label: "Elève",
-            type: "directory",
-            value: "username"
+            id: "date",
+            type: "date",
+            label: "Date de la question",
+            value: "today"
         },
         {
-            id: "instructor",
-            label: "Instructeur",
-            type: "directory"
+            layout: "horizontal",
+            defaultConfig: {
+                width: "50%",
+                fieldWidth: "100%",
+                labelWidth: "100%",
+                labelPosition: "top"
+            },
+            items: [
+                // Eleve
+                {
+                    id: "student",
+                    label: "Elève",
+                    type: "directory",
+                    value: "username"
+                },
+                // Instructeur
+                {
+                    id: "instructor",
+                    label: "Instructeur",
+                    type: "directory"
+                }
+            ]
         },
+        // Question
         {
             id: "question",
             type: "textarea",
             label: "Question",
             rows: 10
         },
+        // Réponse
         {
             id: "answer",
             type: "textarea",
@@ -30,4 +51,6 @@ kiss.app.defineModel({
             rows: 10
         }
     ]
-});
+})
+
+;

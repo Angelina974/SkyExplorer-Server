@@ -3,7 +3,7 @@ kiss.app.defineModel({
     name: "User",
     namePlural: "Users",
     icon: "fas fa-user",
-    color: "#00aaee",
+    color: "var(--skyexplorer-color)",
 
     items: [{
             id: "accountId"
@@ -44,10 +44,22 @@ kiss.app.defineModel({
             type: "select",
             label: "Type",
             options: [
-                "Administrateur",
-                "Instructeur",
-                "Elève pilote",
-                "Pilote"
+                {
+                    value: "Administrateur",
+                    color: "#ff0000"
+                },
+                {
+                    value: "Instructeur",
+                    color: "#00aaee"
+                },
+                {
+                    value: "Elève pilote",
+                    color: "#55cc00"
+                },
+                {
+                    value: "Pilote",
+                    color: "#556677"
+                }
             ]
         },
         {
