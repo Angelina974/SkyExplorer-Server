@@ -9,7 +9,7 @@ kiss.app.defineModel({
         // Section pour les infos de l'avion
         {
             type: "panel",
-            title: "Informations sur l'avion'",
+            title: "Informations sur l'avion",
             icon: "fas fa-clipboard",
             collapsible: true,
 
@@ -64,6 +64,17 @@ kiss.app.defineModel({
                     type: "textarea",
                     label: "Notes complémentaires",
                     rows: 5
+                },
+                // Image URL
+                {
+                    id: "planeImageUrl",
+                    type: "text",
+                    label: "URL image de l'avion"
+                },
+                // Image insertion point
+                {
+                    id: "planeImage",
+                    type: "html"
                 }
             ]
         },
